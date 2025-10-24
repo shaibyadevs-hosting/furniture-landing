@@ -80,3 +80,17 @@
     @apply bg-background text-foreground;
   }
 }
+
+.krona-one-regular {
+  font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.hero-bg {
+  background-image: url('/hero-bg.png');
+  background-size: cover;
+  background-position: center;
+  /* filter: brightness(0.8); */
+  background-repeat: no-repeat;
+}

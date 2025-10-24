@@ -17,14 +17,14 @@ export function FeaturedCollections() {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
-            Featured <span className="text-blue-500">Collections</span>
+            Featured <span className="text-blue-300">Collections</span>
           </h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-4">
             The best of our craftsmanship, curated for your home. Quality furniture, simplified.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
+        <div className="mx-1 sm:mx-4 lg:mx-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
           {collections.map((collection, index) => {
             const Icon = collection.icon
             return (
@@ -32,7 +32,7 @@ export function FeaturedCollections() {
                 key={index}
                 className={`p-4 sm:p-6 lg:p-8 text-center cursor-pointer transition-all duration-300 hover:shadow-xl ${
                   collection.active
-                    ? 'bg-blue-600 text-white shadow-lg sm:transform sm:scale-105'
+                    ? 'bg-blue-800 text-white shadow-lg sm:transform sm:scale-105'
                     : 'bg-gray-50 hover:bg-gray-100'
                 }`}
               >
