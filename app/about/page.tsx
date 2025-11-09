@@ -364,18 +364,22 @@ export default function AboutPage() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
-          className="py-12 sm:py-16 md:py-20 bg-white"
+          className="py-12 sm:py-16 md:py-20 bg-gray-50"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0,0,0,0.02) 1px, transparent 0)`,
+            backgroundSize: '20px 20px'
+          }}
         >
           <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
             <motion.div
               variants={fadeInUp}
-              className="text-center mb-8 sm:mb-12"
+              className="mb-8 sm:mb-12"
             >
               <p className="text-gray-600 text-sm sm:text-base mb-2">Quality Assurance</p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 ISO - CERTIFICATION
               </h2>
-              <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg text-gray-700 max-w-3xl">
                 We maintain the highest quality standards which includes certifications of
               </p>
             </motion.div>
@@ -384,18 +388,19 @@ export default function AboutPage() {
               {/* ISO 9001:2015 */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white rounded-lg p-4 sm:p-6 shadow-md hover:shadow-xl transition-shadow"
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
               >
-                <div className="relative h-32 sm:h-40 mb-4">
+                <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
                     src="/certifications/isocert.png"
                     alt="ISO 9001:2015"
-                    fill
+                    width={120}
+                    height={120}
                     className="object-contain"
                   />
                 </div>
-                <p className="text-xs sm:text-sm text-gray-700 text-center">
+                <p className="text-xs sm:text-sm text-gray-700 text-center leading-relaxed">
                   ISO 9001:2015 from IR Class Approved By NABCB
                 </p>
               </motion.div>
@@ -403,18 +408,19 @@ export default function AboutPage() {
               {/* ISO 50001:2018 */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white rounded-lg p-4 sm:p-6 shadow-md hover:shadow-xl transition-shadow"
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
               >
-                <div className="relative h-32 sm:h-40 mb-4">
+                <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
                     src="/certifications/isocert2.png"
                     alt="ISO 50001:2018"
-                    fill
+                    width={120}
+                    height={120}
                     className="object-contain"
                   />
                 </div>
-                <p className="text-xs sm:text-sm text-gray-700 text-center">
+                <p className="text-xs sm:text-sm text-gray-700 text-center leading-relaxed">
                   ISO 50001:2018 from IR Class Approved By NABCB
                 </p>
               </motion.div>
@@ -422,18 +428,19 @@ export default function AboutPage() {
               {/* ISO 45001:2018 */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white rounded-lg p-4 sm:p-6 shadow-md hover:shadow-xl transition-shadow"
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
               >
-                <div className="relative h-32 sm:h-40 mb-4">
+                <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
                     src="/certifications/isocert3.png"
                     alt="ISO 45001:2018"
-                    fill
+                    width={120}
+                    height={120}
                     className="object-contain"
                   />
                 </div>
-                <p className="text-xs sm:text-sm text-gray-700 text-center">
+                <p className="text-xs sm:text-sm text-gray-700 text-center leading-relaxed">
                   ISO 45001:2018 from IR Class Approved By NABCB
                 </p>
               </motion.div>
@@ -441,18 +448,19 @@ export default function AboutPage() {
               {/* ISO 14001:2015 */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white rounded-lg p-4 sm:p-6 shadow-md hover:shadow-xl transition-shadow"
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
               >
-                <div className="relative h-32 sm:h-40 mb-4">
+                <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
                     src="/certifications/isocert4.png"
                     alt="ISO 14001:2015"
-                    fill
+                    width={120}
+                    height={120}
                     className="object-contain"
                   />
                 </div>
-                <p className="text-xs sm:text-sm text-gray-700 text-center">
+                <p className="text-xs sm:text-sm text-gray-700 text-center leading-relaxed">
                   ISO 14001:2015 from IR Class Approved By NABCB
                 </p>
               </motion.div>
@@ -460,75 +468,79 @@ export default function AboutPage() {
               {/* BIFMA */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white rounded-lg p-4 sm:p-6 shadow-md hover:shadow-xl transition-shadow"
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
               >
-                <div className="relative h-32 sm:h-40 mb-4">
+                <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
                     src="/certifications/bifmacert.png"
                     alt="BIFMA"
-                    fill
+                    width={120}
+                    height={120}
                     className="object-contain"
                   />
                 </div>
-                <p className="text-xs sm:text-sm text-gray-700 text-center">
+                <p className="text-xs sm:text-sm text-gray-700 text-center leading-relaxed">
                   Membership & Compliance for Manufacturing of Furniture
-                </p>
-              </motion.div>
-
-              {/* GRIHA */}
-              <motion.div
-                variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white rounded-lg p-4 sm:p-6 shadow-md hover:shadow-xl transition-shadow"
-              >
-                <div className="relative h-32 sm:h-40 mb-4">
-                  <Image
-                    src="/certifications/girhacert.png"
-                    alt="GRIHA"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <p className="text-xs sm:text-sm text-gray-700 text-center">
-                  Green Rating For Integrated Habitat Assessment
                 </p>
               </motion.div>
 
               {/* FIRA */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white rounded-lg p-4 sm:p-6 shadow-md hover:shadow-xl transition-shadow"
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
               >
-                <div className="relative h-32 sm:h-40 mb-4">
+                <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
                     src="/certifications/firacert.png"
                     alt="FIRA"
-                    fill
+                    width={120}
+                    height={120}
                     className="object-contain"
                   />
                 </div>
-                <p className="text-xs sm:text-sm text-gray-700 text-center">
+                <p className="text-xs sm:text-sm text-gray-700 text-center leading-relaxed">
                   Certified by furniture industry research association
+                </p>
+              </motion.div>
+
+              {/* GRIHA */}
+              <motion.div
+                variants={fadeInUp}
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+              >
+                <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
+                  <Image
+                    src="/certifications/girhacert.png"
+                    alt="GRIHA"
+                    width={120}
+                    height={120}
+                    className="object-contain"
+                  />
+                </div>
+                <p className="text-xs sm:text-sm text-gray-700 text-center leading-relaxed">
+                  Green Rating For Integrated Habitat Assessment
                 </p>
               </motion.div>
 
               {/* ISO 13485:2016 */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white rounded-lg p-4 sm:p-6 shadow-md hover:shadow-xl transition-shadow"
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
               >
-                <div className="relative h-32 sm:h-40 mb-4">
+                <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
                     src="/certifications/isocertlast.png"
                     alt="ISO 13485:2016"
-                    fill
+                    width={120}
+                    height={120}
                     className="object-contain"
                   />
                 </div>
-                <p className="text-xs sm:text-sm text-gray-700 text-center">
+                <p className="text-xs sm:text-sm text-gray-700 text-center leading-relaxed">
                   ISO 13485 - CERTIFICATION OF COMPLIANCE FOR MEDICAL DEVICES
                 </p>
               </motion.div>
@@ -541,4 +553,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
