@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Search, User, Image as ImageIcon } from "lucide-react";
 // import { Button } from "@/components/ui/button";
 
@@ -10,16 +11,13 @@ export function Header() {
       <div className='container mx-auto px-4 sm:px-6 py-3 sm:py-4'>
         <div className='flex items-center justify-between'>
           <Link href='/' className='flex items-center gap-2 sm:gap-3'>
-            <div className='w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-700 flex items-center justify-center relative'>
-              <div
-                className='w-8 h-8 sm:w-10 sm:h-10 rounded-full border-[3px] border-amber-600'
-                style={{
-                  background:
-                    "conic-gradient(from 0deg, #92400e, #b45309, #d97706, #92400e)",
-                }}
-              ></div>
-              <div className='absolute top-0.5 right-0.5 sm:top-1 sm:right-1 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full'></div>
-            </div>
+            <Image
+              src='/touchwoodlogo.png'
+              alt='Touchwood Logo'
+              width={50}
+              height={50}
+              className='w-10 h-10 sm:w-12 sm:h-12 object-contain'
+            />
             <span className='text-white text-lg sm:text-xl font-semibold'>
               Touchwood
             </span>

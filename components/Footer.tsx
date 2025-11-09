@@ -21,7 +21,7 @@ export function Footer() {
             <Phone className='w-4 h-4 text-gray-600 mt-0.5 flex-shrink-0' />
             <div className='flex flex-wrap gap-1'>
               <span className='font-medium'>Phone:</span>
-              <span className='break-words'>+91 987654321, +91 123456789</span>
+              <span className='break-words'>+91 7722008401 / +91 7722001171</span>
             </div>
           </div>
 

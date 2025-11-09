@@ -7,62 +7,62 @@ export function FollowUsSection() {
   const instagramReels = [
     {
       id: 1,
-      thumbnail: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=500&fit=crop&crop=center",
-      reelUrl: "https://www.instagram.com/reel/example1/",
+      thumbnail: "/Instagram story - 1.png",
+      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
       title: "Modern Furniture Showcase"
     },
     {
       id: 2,
-      thumbnail: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&h=500&fit=crop&crop=center", 
-      reelUrl: "https://www.instagram.com/reel/example2/",
+      thumbnail: "/Instagram story - 2.png", 
+      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
       title: "Interior Design Tips"
     },
     {
       id: 3,
-      thumbnail: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=500&h=500&fit=crop&crop=center",
-      reelUrl: "https://www.instagram.com/reel/example3/",
+      thumbnail: "/Instagram story - 3.png",
+      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
       title: "Customer Reviews"
     },
     {
       id: 4,
-      thumbnail: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=500&fit=crop&crop=center",
-      reelUrl: "https://www.instagram.com/reel/example4/",
+      thumbnail: "/Instagram story - 4.png",
+      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
       title: "Behind the Scenes"
     },
     {
       id: 5,
-      thumbnail: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&h=500&fit=crop&crop=center",
-      reelUrl: "https://www.instagram.com/reel/example5/",
+      thumbnail: "/Instagram story - 8.png",
+      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
       title: "New Collection Launch"
     },
     {
       id: 6,
-      thumbnail: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=500&h=500&fit=crop&crop=center",
-      reelUrl: "https://www.instagram.com/reel/example6/",
+      thumbnail: "/Instagram story - 9.png",
+      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
       title: "Living Room Ideas"
     },
     {
       id: 7,
-      thumbnail: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=500&fit=crop&crop=center",
-      reelUrl: "https://www.instagram.com/reel/example7/",
+      thumbnail: "/Instagram story - 10.png",
+      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
       title: "Bedroom Makeover"
     },
     {
       id: 8,
-      thumbnail: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&h=500&fit=crop&crop=center",
-      reelUrl: "https://www.instagram.com/reel/example8/",
+      thumbnail: "/Instagram story - 1.png",
+      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
       title: "Office Setup"
     },
     {
       id: 9,
-      thumbnail: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=500&h=500&fit=crop&crop=center",
-      reelUrl: "https://www.instagram.com/reel/example9/",
+      thumbnail: "/Instagram story - 2.png",
+      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
       title: "Dining Room Design"
     },
     {
       id: 10,
-      thumbnail: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=500&fit=crop&crop=center",
-      reelUrl: "https://www.instagram.com/reel/example10/",
+      thumbnail: "/Instagram story - 3.png",
+      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
       title: "Home Decor Tips"
     }
   ];
