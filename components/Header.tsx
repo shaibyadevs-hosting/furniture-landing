@@ -29,7 +29,7 @@ export function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-all duration-300 ${bgColor}`}>
-      <div className='container mx-auto px-4 sm:px-6 py-3 sm:py-4'>
+      <div className='container mx-auto px-4 sm:px-6 py-1.5 sm:py-2'>
         <div className='flex items-center justify-between'>
           <Link href='/' className='flex items-center' style={{ border: 'none', outline: 'none' }}>
             <Image
@@ -37,7 +37,7 @@ export function Header() {
               alt='Touchwood Logo'
               width={200}
               height={200}
-              className='w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 object-contain'
+              className='w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain'
               style={{ border: 'none', outline: 'none', boxShadow: 'none', borderWidth: 0 }}
               unoptimized
             />
