@@ -4,30 +4,41 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-export default function AboutPage() {
 
+export default function AboutPage() {
   const fadeInUp = {
-    initial: { opacity: 0, y: 50 },
+    initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }
   };
 
   const fadeInLeft = {
-    initial: { opacity: 0, x: -50 },
+    initial: { opacity: 0, x: -80 },
     animate: { opacity: 1, x: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }
   };
 
   const fadeInRight = {
-    initial: { opacity: 0, x: 50 },
+    initial: { opacity: 0, x: 80 },
     animate: { opacity: 1, x: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }
   };
 
   const imageScale = {
-    initial: { opacity: 0, scale: 0.9 },
-    animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.8, ease: "easeOut" }
+    initial: { opacity: 0, scale: 0.85, y: 30 },
+    animate: { opacity: 1, scale: 1, y: 0 },
+    transition: { duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }
+  };
+
+  const staggerContainer = {
+    initial: { opacity: 0 },
+    animate: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2
+      }
+    }
   };
 
   return (
@@ -39,34 +50,39 @@ export default function AboutPage() {
         <motion.section
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={imageScale}
-          className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] overflow-hidden"
+          className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-6 md:py-8"
         >
-          <Image
-            src="/aboutus1.webp"
-            alt="Touchwood Factory"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-          <motion.div
-            variants={fadeInUp}
-            className="absolute bottom-10 left-0 right-0 text-center px-4"
-          >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
-              ABOUT US
-            </h1>
-          </motion.div>
+          <div className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+            <Image
+              src="/aboutus1.webp"
+              alt="Touchwood Factory"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="absolute bottom-10 left-0 right-0 text-center px-4"
+            >
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 drop-shadow-2xl">
+                ABOUT US
+              </h1>
+            </motion.div>
+          </div>
         </motion.section>
 
         {/* First Text Section */}
         <motion.section
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeInUp}
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
           className="py-12 sm:py-16 md:py-20 bg-white"
         >
           <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
@@ -80,7 +96,7 @@ export default function AboutPage() {
               variants={fadeInUp}
               className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-6 uppercase"
             >
-              INDIA'S LEADING MANUFACTURER OF MODULAR FURNITURE FOR LAST 3 DECADES.
+              INDIA&apos;S LEADING MANUFACTURER OF MODULAR FURNITURE FOR LAST 3 DECADES.
             </motion.p>
             <motion.p
               variants={fadeInUp}
@@ -92,7 +108,7 @@ export default function AboutPage() {
               variants={fadeInUp}
               className="text-base sm:text-lg text-gray-700 leading-relaxed"
             >
-              Established in 1996, we've played a key role in enhancing and enriching a lifestyle of dreams through our evolving furniture concepts. The state-of-the-art factory spreads over 15 acres of land and is located in Nagpur, the logistics hub of India. We are equipped with the most sophisticated European and Japanese technology and machines.
+              Established in 1996, we&apos;ve played a key role in enhancing and enriching a lifestyle of dreams through our evolving furniture concepts. The state-of-the-art factory spreads over 15 acres of land and is located in Nagpur, the logistics hub of India. We are equipped with the most sophisticated European and Japanese technology and machines.
             </motion.p>
           </div>
         </motion.section>
@@ -101,7 +117,8 @@ export default function AboutPage() {
         <motion.section
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
           className="py-12 sm:py-16 md:py-20 bg-gray-50"
         >
           <div className="container mx-auto px-4 sm:px-6">
@@ -145,7 +162,8 @@ export default function AboutPage() {
         <motion.section
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
           className="py-12 sm:py-16 md:py-20 bg-white"
         >
           <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
@@ -168,10 +186,10 @@ export default function AboutPage() {
               className="text-center"
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.7, rotate: -5 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="relative mb-6"
               >
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56 mx-auto">
@@ -242,10 +260,10 @@ export default function AboutPage() {
               className="text-center"
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.7, rotate: -5 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="relative mb-6"
               >
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56 mx-auto">
@@ -310,13 +328,15 @@ export default function AboutPage() {
               </motion.p>
             </motion.div>
           </div>
+          </div>
         </motion.section>
 
         {/* Timeline Section */}
         <motion.section
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
           className="py-12 sm:py-16 md:py-20 bg-gray-50"
         >
           <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
@@ -332,29 +352,29 @@ export default function AboutPage() {
               </h3>
             </motion.div>
             <motion.div
-              variants={fadeInUp}
+              variants={staggerContainer}
               className="space-y-8"
             >
-              <div className="relative pl-8 border-l-4 border-blue-500">
+              <motion.div variants={fadeInLeft} className="relative pl-8 border-l-4 border-blue-500">
                 <div className="absolute -left-3 top-0 w-6 h-6 bg-blue-500 rounded-full"></div>
                 <h4 className="text-xl font-bold text-gray-900 mb-2">1996</h4>
                 <p className="text-gray-700">Company Established - Beginning of our journey</p>
-              </div>
-              <div className="relative pl-8 border-l-4 border-blue-500">
+              </motion.div>
+              <motion.div variants={fadeInLeft} className="relative pl-8 border-l-4 border-blue-500">
                 <div className="absolute -left-3 top-0 w-6 h-6 bg-blue-500 rounded-full"></div>
                 <h4 className="text-xl font-bold text-gray-900 mb-2">2000s</h4>
                 <p className="text-gray-700">Expansion and Growth - Setting new standards in furniture manufacturing</p>
-              </div>
-              <div className="relative pl-8 border-l-4 border-blue-500">
+              </motion.div>
+              <motion.div variants={fadeInLeft} className="relative pl-8 border-l-4 border-blue-500">
                 <div className="absolute -left-3 top-0 w-6 h-6 bg-blue-500 rounded-full"></div>
                 <h4 className="text-xl font-bold text-gray-900 mb-2">2010s</h4>
                 <p className="text-gray-700">ISO Certifications - Achieving international quality standards</p>
-              </div>
-              <div className="relative pl-8 border-l-4 border-blue-500">
+              </motion.div>
+              <motion.div variants={fadeInLeft} className="relative pl-8 border-l-4 border-blue-500">
                 <div className="absolute -left-3 top-0 w-6 h-6 bg-blue-500 rounded-full"></div>
                 <h4 className="text-xl font-bold text-gray-900 mb-2">2020s</h4>
                 <p className="text-gray-700">Innovation & Excellence - Leading the industry with cutting-edge solutions</p>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </motion.section>
@@ -363,7 +383,8 @@ export default function AboutPage() {
         <motion.section
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
           className="py-12 sm:py-16 md:py-20 bg-gray-50"
           style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0,0,0,0.02) 1px, transparent 0)`,
@@ -388,8 +409,9 @@ export default function AboutPage() {
               {/* ISO 9001:2015 */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                whileHover={{ scale: 1.05, y: -8, rotateY: 5 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-xl transition-all"
               >
                 <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
@@ -408,8 +430,9 @@ export default function AboutPage() {
               {/* ISO 50001:2018 */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                whileHover={{ scale: 1.05, y: -8, rotateY: 5 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-xl transition-all"
               >
                 <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
@@ -428,8 +451,9 @@ export default function AboutPage() {
               {/* ISO 45001:2018 */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                whileHover={{ scale: 1.05, y: -8, rotateY: 5 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-xl transition-all"
               >
                 <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
@@ -448,8 +472,9 @@ export default function AboutPage() {
               {/* ISO 14001:2015 */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                whileHover={{ scale: 1.05, y: -8, rotateY: 5 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-xl transition-all"
               >
                 <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
@@ -468,8 +493,9 @@ export default function AboutPage() {
               {/* BIFMA */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                whileHover={{ scale: 1.05, y: -8, rotateY: 5 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-xl transition-all"
               >
                 <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
@@ -488,8 +514,9 @@ export default function AboutPage() {
               {/* FIRA */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                whileHover={{ scale: 1.05, y: -8, rotateY: 5 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-xl transition-all"
               >
                 <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
@@ -508,8 +535,9 @@ export default function AboutPage() {
               {/* GRIHA */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                whileHover={{ scale: 1.05, y: -8, rotateY: 5 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-xl transition-all"
               >
                 <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image
@@ -528,8 +556,9 @@ export default function AboutPage() {
               {/* ISO 13485:2016 */}
               <motion.div
                 variants={fadeInUp}
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                whileHover={{ scale: 1.05, y: -8, rotateY: 5 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm hover:shadow-xl transition-all"
               >
                 <div className="relative h-32 sm:h-40 mb-4 flex items-center justify-center">
                   <Image

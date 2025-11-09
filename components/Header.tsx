@@ -28,43 +28,39 @@ export function Header() {
     <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-all duration-300 ${bgColor}`}>
       <div className='container mx-auto px-4 sm:px-6 py-3 sm:py-4'>
         <div className='flex items-center justify-between'>
-          <Link href='/' className='flex items-center gap-2 sm:gap-3'>
-            <div className='w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-700 flex items-center justify-center relative'>
-              <div
-                className='w-8 h-8 sm:w-10 sm:h-10 rounded-full border-[3px] border-amber-600'
-                style={{
-                  background:
-                    "conic-gradient(from 0deg, #92400e, #b45309, #d97706, #92400e)",
-                }}
-              ></div>
-              <div className='absolute top-0.5 right-0.5 sm:top-1 sm:right-1 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full'></div>
-            </div>
-            <span className='text-white text-lg sm:text-xl font-semibold'>
-              Touchwood
-            </span>
+          <Link href='/' className='flex items-center' style={{ border: 'none', outline: 'none' }}>
+            <Image
+              src='/touchwoodlogo.png'
+              alt='Touchwood Logo'
+              width={120}
+              height={120}
+              className='w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain'
+              style={{ border: 'none', outline: 'none', boxShadow: 'none', borderWidth: 0 }}
+              unoptimized
+            />
           </Link>
 
           <nav className='hidden lg:flex items-center gap-6 xl:gap-8'>
             <Link
-              href='#home'
+              href='/#home'
               className={`${textColor} ${hoverColor} transition-colors font-medium`}
             >
               Home
             </Link>
             <Link
-              href='#products'
+              href='/#products'
               className={`${textColor} ${hoverColor} transition-colors font-medium`}
             >
               Products
             </Link>
             <Link
-              href='#about'
+              href='/about'
               className={`${textColor} ${hoverColor} transition-colors font-medium`}
             >
               About
             </Link>
             <Link
-              href='#contact'
+              href='/#contact'
               className={`${textColor} ${hoverColor} transition-colors font-medium`}
             >
               Contact

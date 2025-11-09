@@ -2,70 +2,55 @@
 
 import Image from "next/image";
 import { Play } from "lucide-react";
+import { useState, useEffect } from "react";
+
+interface ReelData {
+  reelLink: string;
+  thumbnail: string;
+}
 
 export function FollowUsSection() {
-  const instagramReels = [
-    {
-      id: 1,
-      thumbnail: "/Instagram story - 1.png",
-      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
-      title: "Modern Furniture Showcase"
-    },
-    {
-      id: 2,
-      thumbnail: "/Instagram story - 2.png", 
-      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
-      title: "Interior Design Tips"
-    },
-    {
-      id: 3,
-      thumbnail: "/Instagram story - 3.png",
-      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
-      title: "Customer Reviews"
-    },
-    {
-      id: 4,
-      thumbnail: "/Instagram story - 4.png",
-      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
-      title: "Behind the Scenes"
-    },
-    {
-      id: 5,
-      thumbnail: "/Instagram story - 8.png",
-      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
-      title: "New Collection Launch"
-    },
-    {
-      id: 6,
-      thumbnail: "/Instagram story - 9.png",
-      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
-      title: "Living Room Ideas"
-    },
-    {
-      id: 7,
-      thumbnail: "/Instagram story - 10.png",
-      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
-      title: "Bedroom Makeover"
-    },
-    {
-      id: 8,
-      thumbnail: "/Instagram story - 1.png",
-      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
-      title: "Office Setup"
-    },
-    {
-      id: 9,
-      thumbnail: "/Instagram story - 2.png",
-      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
-      title: "Dining Room Design"
-    },
-    {
-      id: 10,
-      thumbnail: "/Instagram story - 3.png",
-      reelUrl: "https://www.instagram.com/touchwood_furnitures/reel/",
-      title: "Home Decor Tips"
-    }
+  const [instagramReels, setInstagramReels] = useState<ReelData[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchReels = async () => {
+      try {
+        const response = await fetch('/instagram-reels.json');
+        const data = await response.json();
+        setInstagramReels(data);
+      } catch (error) {
+        console.error('Error fetching Instagram reels:', error);
+        setInstagramReels([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchReels();
+  }, []);
+
+  const titles = [
+    "Modern Furniture Showcase",
+    "Interior Design Tips",
+    "Customer Reviews",
+    "Behind the Scenes",
+    "New Collection Launch",
+    "Living Room Ideas",
+    "Bedroom Makeover",
+    "Office Setup",
+    "Dining Room Design",
+    "Home Decor Tips",
+    "Premium Collection",
+    "Luxury Designs"
   ];
+
+  const instagramReelsWithTitles = instagramReels.map((reel, index) => ({
+    id: index + 1,
+    thumbnail: reel.thumbnail,
+    reelUrl: reel.reelLink,
+    title: titles[index] || `Reel ${index + 1}`
+  }));
 
   const handleVideoClick = (reelUrl: string) => {
     window.open(reelUrl, '_blank');
@@ -98,7 +83,12 @@ export function FollowUsSection() {
 
         {/* Video Grid - Responsive columns with little padding */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-0 w-full px-2 sm:px-3 md:px-4">
-          {instagramReels.map((reel, index) => (
+          {loading ? (
+            <div className="col-span-full text-center py-12">
+              <p className="text-gray-600">Loading reels...</p>
+            </div>
+          ) : (
+            instagramReelsWithTitles.map((reel, index) => (
             <div
               key={reel.id}
               className="group relative aspect-square overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-105"
@@ -134,7 +124,8 @@ export function FollowUsSection() {
                 </p>
               </div>
             </div>
-          ))}
+            ))
+          )}
         </div>
 
         {/* Call to Action */}
