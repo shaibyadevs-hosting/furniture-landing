@@ -4,10 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { Search, User, Image as ImageIcon } from "lucide-react";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 // import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isAboutPage = pathname === '/about';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,9 +23,9 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const textColor = isScrolled ? 'text-blue-600' : 'text-white';
-  const hoverColor = isScrolled ? 'hover:text-blue-800' : 'hover:text-blue-300';
-  const bgColor = isScrolled ? 'bg-white/95' : 'bg-transparent';
+  const textColor = (isScrolled || isAboutPage) ? 'text-blue-600' : 'text-white';
+  const hoverColor = (isScrolled || isAboutPage) ? 'hover:text-blue-800' : 'hover:text-blue-300';
+  const bgColor = (isScrolled || isAboutPage) ? 'bg-white/95' : 'bg-transparent';
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-all duration-300 ${bgColor}`}>
@@ -32,9 +35,9 @@ export function Header() {
             <Image
               src='/touchwoodlogo.png'
               alt='Touchwood Logo'
-              width={120}
-              height={120}
-              className='w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain'
+              width={200}
+              height={200}
+              className='w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 object-contain'
               style={{ border: 'none', outline: 'none', boxShadow: 'none', borderWidth: 0 }}
               unoptimized
             />
@@ -79,7 +82,10 @@ export function Header() {
               <User className='w-4 h-4 sm:w-5 sm:h-5' />
               <span className='hidden xl:inline text-sm'>Account</span>
             </button>
-            <button className={`${textColor} ${hoverColor} transition-colors flex items-center gap-1.5 sm:gap-2`}>
+            <button 
+              onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
+              className={`${textColor} ${hoverColor} transition-colors flex items-center gap-1.5 sm:gap-2`}
+            >
               <ImageIcon className='w-4 h-4 sm:w-5 sm:h-5' />
               <span className='hidden xl:inline text-sm'>Gallery</span>
             </button>

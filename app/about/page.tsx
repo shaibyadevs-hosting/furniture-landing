@@ -13,9 +13,9 @@ export default function AboutPage() {
   };
 
   const fadeInLeft = {
-    initial: { opacity: 0, x: -80 },
+    initial: { opacity: 0, x: -150 },
     animate: { opacity: 1, x: 0 },
-    transition: { duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }
+    transition: { duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }
   };
 
   const fadeInRight = {
@@ -24,10 +24,16 @@ export default function AboutPage() {
     transition: { duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }
   };
 
+  const slideInFromRight = {
+    initial: { opacity: 0, x: 100, scale: 0.9 },
+    animate: { opacity: 1, x: 0, scale: 1 },
+    transition: { duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }
+  };
+
   const imageScale = {
     initial: { opacity: 0, scale: 0.85, y: 30 },
     animate: { opacity: 1, scale: 1, y: 0 },
-    transition: { duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }
+    transition: { duration: 2.5, ease: [0.25, 0.46, 0.45, 0.94] }
   };
 
   const staggerContainer = {
@@ -42,10 +48,10 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="krona-one-regular min-h-screen">
+    <div className="krona-one-regular min-h-screen overflow-x-hidden">
       <Header />
       
-      <main className="pt-20">
+      <main className="pt-24 sm:pt-28 md:pt-32 overflow-x-hidden">
         {/* Large Hero Image Section */}
         <motion.section
           initial="initial"
@@ -54,7 +60,7 @@ export default function AboutPage() {
           variants={imageScale}
           className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-6 md:py-8"
         >
-          <div className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+          <div className="relative w-full h-full rounded-md sm:rounded-lg overflow-hidden shadow-2xl">
             <Image
               src="/aboutus1.webp"
               alt="Touchwood Factory"
@@ -119,14 +125,18 @@ export default function AboutPage() {
           whileInView="animate"
           viewport={{ once: true, amount: 0.2 }}
           variants={staggerContainer}
-          className="py-12 sm:py-16 md:py-20 bg-gray-50"
+          className="py-12 sm:py-16 md:py-20 bg-gray-50 overflow-x-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+          <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center w-full">
               {/* Left Text */}
               <motion.div
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, amount: 0.3 }}
                 variants={fadeInLeft}
-                className="order-2 lg:order-1"
+                className="order-2 lg:order-1 w-full min-w-0"
+                style={{ willChange: 'transform' }}
               >
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
                   <span className="text-blue-500">Few Words</span>
@@ -144,14 +154,20 @@ export default function AboutPage() {
 
               {/* Right Image */}
               <motion.div
-                variants={fadeInRight}
-                className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-lg overflow-hidden order-1 lg:order-2"
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={slideInFromRight}
+                className="relative w-full max-w-full aspect-[4/3] sm:aspect-square md:aspect-[4/3] rounded-lg overflow-hidden order-1 lg:order-2 min-h-[300px] sm:min-h-[400px] md:min-h-[500px]"
+                style={{ contain: 'layout' }}
               >
                 <Image
                   src="/aboutus1.webp"
                   alt="Touchwood Manufacturing"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
                 />
               </motion.div>
             </div>
@@ -179,149 +195,125 @@ export default function AboutPage() {
               </h3>
             </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 max-w-4xl mx-auto">
-            {/* Director 1 - Kirit Joshi */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 max-w-6xl mx-auto">
+            {/* Director 1 - Pratik Sathawane */}
             <motion.div
-              variants={fadeInLeft}
               className="text-center"
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.7, rotate: -5 }}
-                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="relative mb-6"
+                transition={{ duration: 2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="relative mb-6 mx-auto"
               >
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56 mx-auto">
-                  <motion.svg
-                    className="absolute inset-0 w-full h-full"
-                    viewBox="0 0 200 200"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                  >
-                    <motion.circle
-                      cx="100"
-                      cy="100"
-                      r="95"
-                      fill="none"
-                      stroke="#3b82f6"
-                      strokeWidth="2"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: {
-                          pathLength: 1,
-                          opacity: 1,
-                          transition: { duration: 1.5, ease: "easeInOut" }
-                        }
-                      }}
-                    />
-                    <motion.circle
-                      cx="100"
-                      cy="100"
-                      r="85"
-                      fill="none"
-                      stroke="#fbbf24"
-                      strokeWidth="2"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: {
-                          pathLength: 1,
-                          opacity: 1,
-                          transition: { duration: 1.5, delay: 0.3, ease: "easeInOut" }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  <div className="absolute inset-4 rounded-full overflow-hidden bg-white shadow-lg">
-                    <div className="w-full h-full bg-gradient-to-br from-blue-100 to-yellow-100 flex items-center justify-center">
-                      <span className="text-4xl font-bold text-gray-700">KJ</span>
-                    </div>
+                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 mx-auto aspect-square">
+                  <Image
+                    src="/aboutustouchwoodperson.jpg"
+                    alt="Pratik Sathawane"
+                    fill
+                    className="object-cover rounded-lg shadow-xl"
+                    sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, 320px"
+                  />
+                </div>
+              </motion.div>
+              <motion.h4
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 uppercase"
+              >
+                PRATIK SATHAWANE
+              </motion.h4>
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="text-gray-600 text-sm sm:text-base mb-1"
+              >
+                B.Tech (Civil), MBA
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="text-gray-600 text-xs sm:text-sm"
+              >
+                8 Years Experience in Industry
+              </motion.p>
+            </motion.div>
+
+            {/* Director 2 - Kirit Joshi */}
+            <motion.div
+              className="text-center"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="relative mb-6 mx-auto"
+              >
+                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 mx-auto aspect-square">
+                  <div className="w-full h-full bg-gradient-to-br from-blue-100 to-yellow-100 flex items-center justify-center rounded-lg shadow-xl">
+                    <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-700">KJ</span>
                   </div>
                 </div>
               </motion.div>
               <motion.h4
-                variants={fadeInUp}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 uppercase"
               >
                 KIRIT JOSHI
               </motion.h4>
               <motion.p
-                variants={fadeInUp}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="text-gray-600 text-sm sm:text-base"
               >
                 Founder Director
               </motion.p>
             </motion.div>
 
-            {/* Director 2 - Vivek Deshpande */}
+            {/* Director 3 - Vivek Deshpande */}
             <motion.div
-              variants={fadeInRight}
               className="text-center"
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.7, rotate: -5 }}
-                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="relative mb-6"
+                transition={{ duration: 2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="relative mb-6 mx-auto"
               >
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56 mx-auto">
-                  <motion.svg
-                    className="absolute inset-0 w-full h-full"
-                    viewBox="0 0 200 200"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                  >
-                    <motion.circle
-                      cx="100"
-                      cy="100"
-                      r="95"
-                      fill="none"
-                      stroke="#3b82f6"
-                      strokeWidth="2"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: {
-                          pathLength: 1,
-                          opacity: 1,
-                          transition: { duration: 1.5, ease: "easeInOut" }
-                        }
-                      }}
-                    />
-                    <motion.circle
-                      cx="100"
-                      cy="100"
-                      r="85"
-                      fill="none"
-                      stroke="#fbbf24"
-                      strokeWidth="2"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: {
-                          pathLength: 1,
-                          opacity: 1,
-                          transition: { duration: 1.5, delay: 0.3, ease: "easeInOut" }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  <div className="absolute inset-4 rounded-full overflow-hidden bg-white shadow-lg">
-                    <div className="w-full h-full bg-gradient-to-br from-blue-100 to-yellow-100 flex items-center justify-center">
-                      <span className="text-4xl font-bold text-gray-700">VD</span>
-                    </div>
+                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 mx-auto aspect-square">
+                  <div className="w-full h-full bg-gradient-to-br from-blue-100 to-yellow-100 flex items-center justify-center rounded-lg shadow-xl">
+                    <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-700">VD</span>
                   </div>
                 </div>
               </motion.div>
               <motion.h4
-                variants={fadeInUp}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 uppercase"
               >
                 VIVEK DESHPANDE
               </motion.h4>
               <motion.p
-                variants={fadeInUp}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="text-gray-600 text-sm sm:text-base"
               >
                 Founder Director
