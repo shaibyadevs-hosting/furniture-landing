@@ -142,7 +142,7 @@ export default function AboutPage() {
                   <span className="text-blue-500">Few Words</span>
                 </h2>
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4 sm:mb-6 uppercase">
-                  ABOUT SPACEWOOD
+                  ABOUT TOUCHWOOD
                 </h3>
                 <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4">
                   Our commitment to excellence has made us a trusted name in the furniture industry. With decades of experience, we continue to innovate and deliver furniture solutions that combine functionality with aesthetic appeal.
@@ -195,7 +195,7 @@ export default function AboutPage() {
               </h3>
             </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8 sm:gap-12 max-w-6xl mx-auto">
             {/* Director 1 - Pratik Sathawane */}
             <motion.div
               className="text-center"
@@ -242,83 +242,10 @@ export default function AboutPage() {
                 transition={{ duration: 1.2, delay: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="text-gray-600 text-xs sm:text-sm"
               >
-                8 Years Experience in Industry
+                Since 8 Years Experience in Industry
               </motion.p>
             </motion.div>
 
-            {/* Director 2 - Kirit Joshi */}
-            <motion.div
-              className="text-center"
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="relative mb-6 mx-auto"
-              >
-                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 mx-auto aspect-square">
-                  <div className="w-full h-full bg-gradient-to-br from-blue-100 to-yellow-100 flex items-center justify-center rounded-lg shadow-xl">
-                    <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-700">KJ</span>
-                  </div>
-                </div>
-              </motion.div>
-              <motion.h4
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 uppercase"
-              >
-                KIRIT JOSHI
-              </motion.h4>
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-gray-600 text-sm sm:text-base"
-              >
-                Founder Director
-              </motion.p>
-            </motion.div>
-
-            {/* Director 3 - Vivek Deshpande */}
-            <motion.div
-              className="text-center"
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="relative mb-6 mx-auto"
-              >
-                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 mx-auto aspect-square">
-                  <div className="w-full h-full bg-gradient-to-br from-blue-100 to-yellow-100 flex items-center justify-center rounded-lg shadow-xl">
-                    <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-700">VD</span>
-                  </div>
-                </div>
-              </motion.div>
-              <motion.h4
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 uppercase"
-              >
-                VIVEK DESHPANDE
-              </motion.h4>
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-gray-600 text-sm sm:text-base"
-              >
-                Founder Director
-              </motion.p>
-            </motion.div>
           </div>
           </div>
         </motion.section>
@@ -349,22 +276,22 @@ export default function AboutPage() {
             >
               <motion.div variants={fadeInLeft} className="relative pl-8 border-l-4 border-blue-500">
                 <div className="absolute -left-3 top-0 w-6 h-6 bg-blue-500 rounded-full"></div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">1996</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-2">2018</h4>
                 <p className="text-gray-700">Company Established - Beginning of our journey</p>
               </motion.div>
               <motion.div variants={fadeInLeft} className="relative pl-8 border-l-4 border-blue-500">
                 <div className="absolute -left-3 top-0 w-6 h-6 bg-blue-500 rounded-full"></div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">2000s</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-2">2019-2020</h4>
                 <p className="text-gray-700">Expansion and Growth - Setting new standards in furniture manufacturing</p>
               </motion.div>
               <motion.div variants={fadeInLeft} className="relative pl-8 border-l-4 border-blue-500">
                 <div className="absolute -left-3 top-0 w-6 h-6 bg-blue-500 rounded-full"></div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">2010s</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-2">2021-2023</h4>
                 <p className="text-gray-700">ISO Certifications - Achieving international quality standards</p>
               </motion.div>
               <motion.div variants={fadeInLeft} className="relative pl-8 border-l-4 border-blue-500">
                 <div className="absolute -left-3 top-0 w-6 h-6 bg-blue-500 rounded-full"></div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">2020s</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-2">2024-2025</h4>
                 <p className="text-gray-700">Innovation & Excellence - Leading the industry with cutting-edge solutions</p>
               </motion.div>
             </motion.div>

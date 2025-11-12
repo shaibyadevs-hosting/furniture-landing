@@ -5,23 +5,28 @@ import { useState, useEffect } from "react";
 
 export function HeroSection() {
   const heroImages = [
-    "/hero-bg.png",
-    "/hero2.jpg",
-    "/hero3.jpeg"
+    "/hero/Luxury_burgundy_velvet_accent_chair_with_tufted_backrest.png",
+    "/hero/Premium_L-shaped_sectional_sofa_in_charcoal_gray_with_wooden_base.png",
+    "/hero/Premium_wooden_dining_table_with_elegant_chairs_in_walnut_finish.png",
+    "/hero/img1.png",
+    "/hero/img2.png"
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || heroImages.length === 0) return;
     
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+      setCurrentImageIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % heroImages.length;
+        return nextIndex;
+      });
     }, 3000); // Change every 3 seconds
 
     return () => clearInterval(interval);
-  }, [heroImages.length, isPaused]);
+  }, [isPaused, heroImages.length]);
 
   return (
     <section 
@@ -35,7 +40,7 @@ export function HeroSection() {
           key={index}
           className="hero-carousel-bg absolute inset-0 transition-opacity duration-[2000ms] ease"
           style={{
-            backgroundImage: `url(${image})`,
+            backgroundImage: `url(${encodeURI(image)})`,
             backgroundSize: "cover",
             backgroundPosition: "center center",
             backgroundRepeat: "no-repeat",
@@ -47,16 +52,16 @@ export function HeroSection() {
       ))}
       
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-600/70 via-slate-700/70 to-slate-800/70 z-2"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-600/50 via-slate-700/50 to-slate-800/50 z-2"></div>
       
       {/* Dotted pattern overlay */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNGgydi0yaC0ydjJ6bS0yIDJ2LTJoLTJ2Mmgyem0wLTR2Mmgydi0yaC0yem0tMiAydi0yaC0ydjJoMnptMC00aDJ2LTJoLTJ2MnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-50 z-3"></div>
 
       <div className='container mx-auto px-4 sm:px-6 relative z-10 text-center pt-4 sm:pt-16 md:pt-20 pb-4 sm:pb-12'>
-        <h1 className='text-xl sm:text-4xl md:text-5xl lg:text-6xl max-w-7xl mx-auto font-bold text-white mb-3 sm:mb-6 leading-tight px-4'>
-          Crafting <span className='text-blue-400'>Comfort</span>{" "}
+        <h1 className='text-xl sm:text-4xl md:text-5xl lg:text-6xl max-w-7xl mx-auto font-extrabold text-white mb-3 sm:mb-6 leading-tight px-4 drop-shadow-2xl' style={{ textShadow: '2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5)' }}>
+          Crafting <span className='text-blue-300 drop-shadow-lg' style={{ textShadow: '2px 2px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(59, 130, 246, 0.6)' }}>Comfort</span>{" "}
           <span className='text-white'>&</span>{" "}
-          <span className='text-blue-400'>Elegance</span>
+          <span className='text-blue-300 drop-shadow-lg' style={{ textShadow: '2px 2px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(59, 130, 246, 0.6)' }}>Elegance</span>
           <br className='hidden sm:block' />
           <span className='text-white'>with Every Piece</span>
         </h1>
@@ -64,6 +69,7 @@ export function HeroSection() {
         <div className='flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mt-3 sm:mt-8 md:mt-12 mb-4 sm:mb-12 md:mb-16 px-4'>
           <Button
             size='sm'
+            onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
             className='bg-blue-600 hover:bg-blue-700 text-white px-2 sm:px-6 lg:px-8 py-1.5 sm:py-3 lg:py-4 text-xs sm:text-base lg:text-lg font-semibold rounded-md transition-all w-full sm:w-auto'
           >
             Shop Now →

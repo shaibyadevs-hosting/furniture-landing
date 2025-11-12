@@ -37,17 +37,17 @@ export function Footer() {
               <span className='font-medium'>Phone:</span>
               <div className='flex flex-wrap gap-2'>
                 <a 
-                  href="tel:+91987654321"
+                  href="tel:7722008401"
                   className='break-words cursor-pointer hover:text-blue-600 hover:underline transition-colors'
                 >
-                  +91 987654321
+                  7722008401
                 </a>
                 <span className='text-gray-400'>|</span>
                 <a 
-                  href="tel:+91123456789"
+                  href="tel:7722001171"
                   className='break-words cursor-pointer hover:text-blue-600 hover:underline transition-colors'
                 >
-                  +91 123456789
+                  7722001171
                 </a>
               </div>
             </div>
@@ -59,11 +59,10 @@ export function Footer() {
             <div className='flex flex-wrap gap-1'>
               <span className='font-medium'>Email:</span>
                <a
-                 href="https://mail.google.com/mail/?view=cm&fs=1&to=info@touchwoodfurnitures.com&su=Inquiry%20about%20Touchwood%20Furnitures"
-                 target="_blank"
+                 href="mailto:Touchwoodfurnitech225@gmail.com"
                  className='break-words hover:underline cursor-pointer hover:text-blue-600 transition-colors'
                >
-                info@touchwoodfurnitures.com
+                Touchwoodfurnitech225@gmail.com
               </a>
             </div>
           </div>

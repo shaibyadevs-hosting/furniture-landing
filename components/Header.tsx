@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Search, User, Image as ImageIcon } from "lucide-react";
+import { User, Image as ImageIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 // import { Button } from "@/components/ui/button";
@@ -28,16 +28,16 @@ export function Header() {
   const bgColor = (isScrolled || isAboutPage) ? 'bg-white/95' : 'bg-transparent';
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-all duration-300 ${bgColor}`}>
-      <div className='container mx-auto px-4 sm:px-6 py-1.5 sm:py-2'>
+    <header className={`fixed top-0 left-0 right-0 z-[9999] backdrop-blur-sm transition-all duration-300 ${bgColor}`}>
+      <div className='container mx-auto px-4 sm:px-6 py-0.5 sm:py-1'>
         <div className='flex items-center justify-between'>
-          <Link href='/' className='flex items-center' style={{ border: 'none', outline: 'none' }}>
+          <Link href='/' className='flex items-center ml-4 sm:ml-6 md:ml-8 lg:ml-12' style={{ border: 'none', outline: 'none' }}>
             <Image
               src='/touchwoodlogo.png'
               alt='Touchwood Logo'
               width={200}
               height={200}
-              className='w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain'
+              className='w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 object-contain'
               style={{ border: 'none', outline: 'none', boxShadow: 'none', borderWidth: 0 }}
               unoptimized
             />
@@ -71,12 +71,8 @@ export function Header() {
           </nav>
 
           <div className='flex items-center gap-3 sm:gap-4 md:gap-6'>
-            <button className={`${textColor} ${hoverColor} transition-colors flex items-center gap-1.5 sm:gap-2`}>
-              <Search className='w-4 h-4 sm:w-5 sm:h-5' />
-              <span className='hidden xl:inline text-sm'>Search</span>
-            </button>
             <button 
-              onClick={() => window.open('https://www.instagram.com/touchwood_furnitures', '_blank')}
+              onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
               className={`${textColor} ${hoverColor} transition-colors flex items-center gap-1.5 sm:gap-2`}
             >
               <User className='w-4 h-4 sm:w-5 sm:h-5' />

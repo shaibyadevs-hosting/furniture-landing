@@ -29,7 +29,7 @@ export function ProductSection({ selectedCategory }: ProductSectionProps) {
         image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&h=800&fit=crop" 
       },
       { 
-        name: "Modern Office Chair", 
+        name: "Modern  Chair", 
         price: "₹2,500.00", 
         image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=800&h=800&fit=crop" 
       },
@@ -43,7 +43,7 @@ export function ProductSection({ selectedCategory }: ProductSectionProps) {
       { 
         name: "Velvet Midnight Natural Sofa", 
         price: "₹5,000.00", 
-        image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=800&fit=crop" 
+        image: "/hero/Elegant_emerald_green_velvet_sofa_with_wooden_legs_in_minimalist_setting.png" 
       },
       { 
         name: "Modern 3-Seater Sofa", 
@@ -135,11 +135,11 @@ export function ProductSection({ selectedCategory }: ProductSectionProps) {
     {
       name: "Velvet Midnight Natural Sofa",
       price: "₹5,000.00",
-      image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=800&fit=crop",
+      image: "/hero/Elegant_emerald_green_velvet_sofa_with_wooden_legs_in_minimalist_setting.png",
     },
-    { name: "Modern Furniture", price: "₹5,000.00", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=800&fit=crop" },
+    { name: "Modern Furniture Sofa", price: "₹5,000.00", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=800&fit=crop" },
     { name: "Modern Furniture Set", price: "₹5,000.00", image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=800&fit=crop" },
-    { name: "Furniture Sofa Set", price: "₹5,000.00", image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=800&fit=crop" },
+    { name: "Furniture Sofa Set", price: "₹5,000.00", image: "/hero/Premium_L-shaped_sectional_sofa_in_charcoal_gray_with_wooden_base.png" },
   ];
 
   // Get products for the selected category
@@ -153,9 +153,9 @@ export function ProductSection({ selectedCategory }: ProductSectionProps) {
     featured?: boolean;
   }) => (
     <Card
-      className="overflow-hidden group hover:shadow-xl hover:border-2 hover:border-blue-500 transition-all duration-300"
+      className="overflow-hidden group hover:shadow-xl hover:border-2 hover:border-blue-500 transition-all duration-300 flex flex-col"
     >
-      <div className='aspect-square bg-gray-100 relative overflow-hidden'>
+      <div className='aspect-square bg-gray-100 relative overflow-hidden flex-shrink-0'>
         <Image
           src={product.image}
           alt={product.name}
@@ -185,7 +185,10 @@ export function ProductSection({ selectedCategory }: ProductSectionProps) {
           <h2 className='text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900'>
             Popular {selectedCategory}s
           </h2>
-          <button className='text-blue-600 hover:text-blue-700 font-semibold text-sm sm:text-base'>
+          <button 
+            onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
+            className='text-blue-600 hover:text-blue-700 font-semibold text-sm sm:text-base'
+          >
             See all
           </button>
         </div>
@@ -200,7 +203,10 @@ export function ProductSection({ selectedCategory }: ProductSectionProps) {
           <h2 className='text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900'>
             Latest Product
           </h2>
-          <button className='text-blue-600 hover:text-blue-700 font-semibold text-sm sm:text-base'>
+          <button 
+            onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
+            className='text-blue-600 hover:text-blue-700 font-semibold text-sm sm:text-base'
+          >
             See all
           </button>
         </div>

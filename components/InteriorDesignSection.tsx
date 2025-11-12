@@ -74,7 +74,7 @@ export function InteriorDesignSection() {
                   rounded-[0.6vw] 
                   overflow-hidden 
                   w-[18vw] sm:w-[28vw] md:w-[20vw] lg:w-[22vw]
-                  z-[100]
+                  z-[10]
                 "
               >
                 <Image
@@ -115,18 +115,21 @@ export function InteriorDesignSection() {
             ))}
           </div>
 
-          <Button className="bg-gray-900 hover:bg-gray-800 text-white text-[1vw] md:text-[0.85vw] px-[2vw] py-[1vw] rounded-full">
+          <Button 
+            onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
+            className="bg-gray-900 hover:bg-gray-800 text-white text-[1vw] md:text-[0.85vw] px-[2vw] py-[1vw] rounded-full"
+          >
             Explore
           </Button>
 
           {/* Sofa image - Responsive positioning */}
           <div className="absolute 
             bottom-[-20vw] right-[1vw] w-[30vw] h-[30vw] 
-            max-sm:bottom-[14vw] max-sm:right-[-3vw] max-sm:z-[770] max-sm:w-[48vw] max-sm:h-[48vw]
+            max-sm:bottom-[14vw] max-sm:right-[-3vw] max-sm:z-[10] max-sm:w-[48vw] max-sm:h-[48vw]
             md:bottom-[-30vw] md:right-[3vw] md:w-[35vw] md:h-[35vw]
             lg:bottom-[-35vw] lg:right-[2vw] lg:w-[35vw] lg:h-[35vw]
             xl:bottom-[-35vw] xl:right-[1vw] xl:w-[35vw] xl:h-[35vw]
-            z-[100]">
+            z-[10]">
             <Image
               src="/gridsection/sofa 1.png"
               alt="Sofa"

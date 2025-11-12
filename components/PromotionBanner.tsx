@@ -28,7 +28,10 @@ export function PromotionBanner() {
                 <br />
                 Set Collection
               </h3>
-              <Button className='bg-gray-900 hover:bg-gray-800 text-white text-sm py-2'>
+              <Button 
+                onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
+                className='bg-gray-900 hover:bg-gray-800 text-white text-sm py-2'
+              >
                 Shop Now
               </Button>
             </div>
@@ -53,7 +56,10 @@ export function PromotionBanner() {
               <h3 className='text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4'>
                 New Combo Collection
               </h3>
-              <Button className='bg-white hover:bg-gray-100 text-gray-900 text-sm py-2'>
+              <Button 
+                onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
+                className='bg-white hover:bg-gray-100 text-gray-900 text-sm py-2'
+              >
                 Shop Now
               </Button>
             </div>

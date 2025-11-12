@@ -77,7 +77,7 @@ export function FollowUsSection() {
             <span className="text-blue-400">FOLLOW US</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 font-medium">
-            @touchwood_furnitures
+            @touchwoodfurnitech
           </p>
         </div>
 
@@ -132,7 +132,7 @@ export function FollowUsSection() {
         <div className="text-center mt-24 sm:mt-24 px-4 sm:px-6">
         
           <button
-            onClick={() => window.open('https://www.instagram.com/touchwood_furnitures', '_blank')}
+            onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
             className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
             Follow on Instagram
