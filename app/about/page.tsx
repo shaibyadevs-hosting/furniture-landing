@@ -114,7 +114,7 @@ export default function AboutPage() {
               variants={fadeInUp}
               className="text-base sm:text-lg text-gray-700 leading-relaxed"
             >
-              Established in 1996, we&apos;ve played a key role in enhancing and enriching a lifestyle of dreams through our evolving furniture concepts. The state-of-the-art factory spreads over 15 acres of land and is located in Nagpur, the logistics hub of India. We are equipped with the most sophisticated European and Japanese technology and machines.
+              Established in 2017, we&apos;ve played a key role in enhancing and enriching a lifestyle of dreams through our evolving furniture concepts. The state-of-the-art factory spreads over 15 acres of land and is located in Nagpur, the logistics hub of India. We are equipped with the most sophisticated European and Japanese technology and machines.
             </motion.p>
           </div>
         </motion.section>
@@ -276,7 +276,7 @@ export default function AboutPage() {
             >
               <motion.div variants={fadeInLeft} className="relative pl-8 border-l-4 border-blue-500">
                 <div className="absolute -left-3 top-0 w-6 h-6 bg-blue-500 rounded-full"></div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">2018</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-2">2017</h4>
                 <p className="text-gray-700">Company Established - Beginning of our journey</p>
               </motion.div>
               <motion.div variants={fadeInLeft} className="relative pl-8 border-l-4 border-blue-500">

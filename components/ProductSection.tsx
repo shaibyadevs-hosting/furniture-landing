@@ -19,12 +19,12 @@ export function ProductSection({ selectedCategory }: ProductSectionProps) {
   const productsByCategory = {
     Chair: [
       { 
-        name: "Armless Solid Dining Chair", 
+        name: "Armless Dining Chair", 
         price: "₹1,250.00", 
         image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=800&fit=crop" 
       },
       { 
-        name: "Elle Decor Roux Arm Chair", 
+        name: "Elle Arm Chair", 
         price: "₹1,250.00", 
         image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&h=800&fit=crop" 
       },
@@ -41,7 +41,7 @@ export function ProductSection({ selectedCategory }: ProductSectionProps) {
     ],
     Sofa: [
       { 
-        name: "Velvet Midnight Natural Sofa", 
+        name: "Velvet Natural Sofa", 
         price: "₹5,000.00", 
         image: "/hero/Elegant_emerald_green_velvet_sofa_with_wooden_legs_in_minimalist_setting.png" 
       },
