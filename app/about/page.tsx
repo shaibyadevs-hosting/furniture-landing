@@ -102,7 +102,7 @@ export default function AboutPage() {
               variants={fadeInUp}
               className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-6 uppercase"
             >
-              INDIA&apos;S LEADING MANUFACTURER OF MODULAR FURNITURE FOR LAST 3 DECADES.
+              INDIA&apos;S LEADING MANUFACTURER OF MODULAR FURNITURE FOR LAST 8 YEARS.
             </motion.p>
             <motion.p
               variants={fadeInUp}

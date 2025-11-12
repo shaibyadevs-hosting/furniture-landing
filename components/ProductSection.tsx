@@ -164,16 +164,18 @@ export function ProductSection({ selectedCategory }: ProductSectionProps) {
         />
         <div className='absolute inset-0 bg-gradient-to-br from-white/20 to-transparent'></div>
       </div>
-      <div className='p-3 text-center sm:p-4 bg-white'>
-        <h3 className='font-semibold text-gray-900 mb-2 text-xs sm:text-sm md:text-base line-clamp-2'>
+      <div className='p-3 text-center sm:p-4 bg-white flex flex-col flex-1'>
+        <h3 className='font-semibold text-gray-900 mb-2 text-xs sm:text-sm md:text-base line-clamp-2 flex-shrink-0'>
           {product.name}
         </h3>
-        <p className='text-base sm:text-lg font-medium text-gray-900 mb-2 sm:mb-3'>
+        <p className='text-base sm:text-lg font-medium text-gray-900 mb-2 sm:mb-3 flex-shrink-0'>
           Price: {product.price}
         </p>
-        <Button className='w-full bg-cyan-700 hover:bg-cyan-800 text-white text-sm py-2'>
-          Add to Cart
-        </Button>
+        <div className='mt-auto pt-2 sm:pt-3'>
+          <Button className='w-full bg-cyan-700 hover:bg-cyan-800 text-white text-sm py-2'>
+            Add to Cart
+          </Button>
+        </div>
       </div>
     </Card>
   );
