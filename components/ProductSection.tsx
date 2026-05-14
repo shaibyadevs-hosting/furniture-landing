@@ -3,6 +3,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { SpacesSection } from "@/components/SpacesSection";
 
 interface Product {
   name: string;
@@ -200,6 +201,8 @@ export function ProductSection({ selectedCategory }: ProductSectionProps) {
             <ProductCard key={index} product={product} />
           ))}
         </div>
+
+        <SpacesSection />
 
         <div className='flex items-center justify-between mb-6 sm:mb-8'>
           <h2 className='text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900'>

@@ -24,9 +24,12 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const textColor = (isScrolled || isAboutPage) ? 'text-blue-600' : 'text-white';
-  const hoverColor = (isScrolled || isAboutPage) ? 'hover:text-blue-800' : 'hover:text-blue-300';
-  const bgColor = (isScrolled || isAboutPage) ? 'bg-white/95' : 'bg-transparent';
+  const isCategoryPage = pathname.startsWith('/category');
+  const isActiveBg = isScrolled || isAboutPage || isCategoryPage;
+
+  const textColor = isActiveBg ? 'text-blue-600' : 'text-white';
+  const hoverColor = isActiveBg ? 'hover:text-blue-800' : 'hover:text-blue-300';
+  const bgColor = isActiveBg ? 'bg-white/95 shadow-sm' : 'bg-transparent';
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -40,13 +43,15 @@ export function Header() {
     <header className={`fixed top-0 left-0 right-0 z-[9999] sm:backdrop-blur-sm transition-all duration-300 ${bgColor} ${isMobileMenuOpen ? 'backdrop-blur-md bg-white/95' : ''} mt-0 sm:mt-0`}>
       <div className='container mx-auto px-4 sm:px-6 py-0 sm:py-1'>
         <div className='flex items-center justify-between'>
-          <Link href='/' className='flex items-center ml-4 sm:ml-6 md:ml-8 lg:ml-12' style={{ border: 'none', outline: 'none' }} onClick={closeMobileMenu}>
+          <Link href='/' className='relative flex items-center ml-4 sm:ml-6 md:ml-8 lg:ml-12' style={{ border: 'none', outline: 'none' }} onClick={closeMobileMenu}>
+            {/* White radial gradient glow behind logo */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0)_70%)] rounded-full pointer-events-none -z-10 blur-sm"></div>
             <Image
-              src='/touchwoodlogo.png'
+              src='/logo.png'
               alt='Touchwood Logo'
               width={200}
               height={200}
-              className='w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 object-contain'
+              className='w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 object-contain relative z-10'
               style={{ border: 'none', outline: 'none', boxShadow: 'none', borderWidth: 0 }}
               unoptimized
             />
