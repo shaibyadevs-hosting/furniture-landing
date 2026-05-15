@@ -7,6 +7,7 @@ import { ProductCard } from "./ProductCard";
 
 interface Product {
   name: string;
+  price: string;
   image: string;
   desc: string;
 }
