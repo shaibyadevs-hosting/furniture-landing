@@ -111,7 +111,7 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
   );
 
   return (
-    <div className="krona-one-regular min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <Header />
       
       <main className="flex-grow pt-32 pb-16 sm:pt-40 lg:pt-48 sm:pb-20">

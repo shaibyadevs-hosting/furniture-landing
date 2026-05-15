@@ -48,7 +48,7 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="krona-one-regular min-h-screen overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden">
       <Header />
       
       <main className="pt-24 sm:pt-28 md:pt-32 overflow-x-hidden">

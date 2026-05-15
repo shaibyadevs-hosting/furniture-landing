@@ -20,7 +20,7 @@ export default function Home() {
   };
 
   return (
-    <div className="krona-one-regular min-h-screen">
+    <div className="min-h-screen">
       <Header />
       <section id="home">
         <HeroSection />
