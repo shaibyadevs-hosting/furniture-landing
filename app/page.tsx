@@ -5,7 +5,7 @@ import { Header } from '@/components/Header'
 import { HeroSection } from '@/components/HeroSection'
 import { FeaturedCollections } from '@/components/FeaturedCollections'
 import { ProductSection } from '@/components/ProductSection'
-import { PromotionBanner } from '@/components/PromotionBanner'
+import { SpacesSection } from '@/components/SpacesSection'
 import { InteriorDesignSection } from '@/components/InteriorDesignSection'
 import { TestimonialsSection } from '@/components/TestimonialsSection'
 import { FollowUsSection } from '@/components/FollowUsSection'
@@ -32,7 +32,10 @@ export default function Home() {
         />
         <ProductSection selectedCategory={selectedCategory} />
       </section>
-      <PromotionBanner />
+      
+      {/* Explore By Space Section separated out as requested */}
+      <SpacesSection />
+      
       <section id="about">
         <InteriorDesignSection />
         <TestimonialsSection />

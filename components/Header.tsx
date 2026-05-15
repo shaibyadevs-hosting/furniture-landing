@@ -43,16 +43,16 @@ export function Header() {
   return (
     <>
       <header 
-        className={`fixed left-1/2 -translate-x-1/2 z-[9999] transition-all duration-500 ease-in-out
+        className={`fixed left-1/2 -translate-x-1/2 z-[9999] transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)]
           ${isVisible ? 'translate-y-0' : '-translate-y-[150%]'}
-          ${isAtTop ? 'top-0 w-full' : 'top-4 w-[95vw] lg:w-auto'}
+          ${isAtTop ? 'top-0 w-full' : 'top-4 w-[95vw] lg:w-[850px] xl:w-[1000px]'}
         `}
       >
         <div 
-          className={`transition-all duration-500 ease-in-out flex items-center justify-between border
+          className={`transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] flex items-center justify-between border overflow-hidden
             ${isAtTop 
-              ? 'bg-gradient-to-b from-black/80 via-black/40 to-transparent shadow-none rounded-none px-6 sm:px-12 md:px-16 pt-4 pb-8 border-transparent gap-6 lg:gap-12' 
-              : 'bg-[#0b132b]/95 backdrop-blur-md shadow-2xl rounded-full p-2.5 sm:p-3 border-white/10 gap-8 lg:gap-16'
+              ? 'bg-[#0b132b] shadow-md rounded-none px-6 sm:px-12 md:px-16 py-4 sm:py-5 border-transparent border-b-white/10 gap-6 lg:gap-12' 
+              : 'bg-[#0b132b]/95 backdrop-blur-md shadow-2xl rounded-full p-2.5 sm:p-3 border-white/10 gap-4 lg:gap-8'
             }
           `}
         >
