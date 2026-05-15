@@ -5,176 +5,124 @@ import Image from "next/image";
 import { User, Image as ImageIcon, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-// import { Button } from "@/components/ui/button";
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const isAboutPage = pathname === '/about';
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      // Change color when scrolled past hero section (approximately 100vh)
-      setIsScrolled(scrollY > window.innerHeight * 0.8);
+      const currentScrollY = window.scrollY;
+      
+      // Check if at the very top
+      if (currentScrollY < 20) {
+        setIsAtTop(true);
+      } else {
+        setIsAtTop(false);
+      }
+
+      // Hide if scrolling down and past 100px. Show if scrolling up.
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
-  const isCategoryPage = pathname.startsWith('/category');
-  const isActiveBg = isScrolled || isAboutPage || isCategoryPage;
-
-  const textColor = isActiveBg ? 'text-blue-600' : 'text-white';
-  const hoverColor = isActiveBg ? 'hover:text-blue-800' : 'hover:text-blue-300';
-  const bgColor = isActiveBg ? 'bg-white/95 shadow-sm' : 'bg-transparent';
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-[9999] sm:backdrop-blur-sm transition-all duration-300 ${bgColor} ${isMobileMenuOpen ? 'backdrop-blur-md bg-white/95' : ''} mt-0 sm:mt-0`}>
-      <div className='container mx-auto px-4 sm:px-6 py-0 sm:py-1'>
-        <div className='flex items-center justify-between'>
-          <Link href='/' className='relative flex items-center ml-4 sm:ml-6 md:ml-8 lg:ml-12' style={{ border: 'none', outline: 'none' }} onClick={closeMobileMenu}>
-            {/* White radial gradient glow behind logo */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0)_70%)] rounded-full pointer-events-none -z-10 blur-sm"></div>
+    <>
+      <header 
+        className={`fixed left-1/2 -translate-x-1/2 z-[9999] transition-all duration-500 ease-in-out
+          ${isVisible ? 'translate-y-0' : '-translate-y-[150%]'}
+          ${isAtTop ? 'top-0 w-full' : 'top-4 w-[95vw] lg:w-auto'}
+        `}
+      >
+        <div 
+          className={`transition-all duration-500 ease-in-out flex items-center justify-between border
+            ${isAtTop 
+              ? 'bg-gradient-to-b from-black/80 via-black/40 to-transparent shadow-none rounded-none px-6 sm:px-12 md:px-16 pt-4 pb-8 border-transparent gap-6 lg:gap-12' 
+              : 'bg-[#0b132b]/95 backdrop-blur-md shadow-2xl rounded-full p-2.5 sm:p-3 border-white/10 gap-8 lg:gap-16'
+            }
+          `}
+        >
+          
+          {/* Leftmost: Logo inside a white circle */}
+          <Link href='/' className='bg-white rounded-full p-2 sm:p-3 flex-shrink-0 flex items-center justify-center shadow-inner aspect-square' onClick={closeMobileMenu}>
             <Image
               src='/logo.png'
               alt='Touchwood Logo'
-              width={200}
-              height={200}
-              className='w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 object-contain relative z-10'
-              style={{ border: 'none', outline: 'none', boxShadow: 'none', borderWidth: 0 }}
+              width={80}
+              height={80}
+              className='w-10 h-10 sm:w-14 sm:h-14 object-contain'
               unoptimized
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className='hidden lg:flex items-center gap-6 xl:gap-8'>
-            <Link
-              href='/#home'
-              className={`${textColor} ${hoverColor} transition-colors font-medium`}
-            >
-              Home
-            </Link>
-            <Link
-              href='/#products'
-              className={`${textColor} ${hoverColor} transition-colors font-medium`}
-            >
-              Products
-            </Link>
-            <Link
-              href='/about'
-              className={`${textColor} ${hoverColor} transition-colors font-medium`}
-            >
-              About
-            </Link>
-            <Link
-              href='/#contact'
-              className={`${textColor} ${hoverColor} transition-colors font-medium`}
-            >
-              Contact
-            </Link>
+          {/* Center Navigation */}
+          <nav className='hidden lg:flex items-center gap-8 xl:gap-12'>
+            <Link href='/#home' className='text-gray-300 hover:text-white transition-colors font-medium text-base lg:text-lg'>Home</Link>
+            <Link href='/#products' className='text-gray-300 hover:text-white transition-colors font-medium text-base lg:text-lg'>Products</Link>
+            <Link href='/about' className='text-gray-300 hover:text-white transition-colors font-medium text-base lg:text-lg'>About</Link>
+            <Link href='/#contact' className='text-gray-300 hover:text-white transition-colors font-medium text-base lg:text-lg'>Contact</Link>
           </nav>
 
-          <div className='flex items-center gap-3 sm:gap-4 md:gap-6'>
+          {/* Rightmost: Icons & Mobile Menu Toggle */}
+          <div className='flex items-center gap-4 sm:gap-6 pr-3 sm:pr-6'>
             {/* Mobile Menu Button */}
-            <button
-              onClick={toggleMobileMenu}
-              className={`lg:hidden ${textColor} ${hoverColor} transition-colors p-2`}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className='w-6 h-6' />
-              ) : (
-                <Menu className='w-6 h-6' />
-              )}
+            <button onClick={toggleMobileMenu} className='lg:hidden text-gray-200 hover:text-white transition-colors p-1' aria-label="Toggle menu">
+              {isMobileMenuOpen ? <X className='w-7 h-7' /> : <Menu className='w-7 h-7' />}
             </button>
 
             {/* Desktop Icons */}
             <button 
-              onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
-              className={`hidden lg:flex ${textColor} ${hoverColor} transition-colors items-center gap-1.5 sm:gap-2`}
+              onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech', '_blank')}
+              className='hidden lg:flex text-gray-300 hover:text-white transition-colors items-center'
             >
-              <User className='w-4 h-4 sm:w-5 sm:h-5' />
-              <span className='hidden xl:inline text-sm'>Account</span>
+              <User className='w-6 h-6 lg:w-7 lg:h-7' />
             </button>
             <button 
-              onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
-              className={`hidden lg:flex ${textColor} ${hoverColor} transition-colors items-center gap-1.5 sm:gap-2`}
+              onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech', '_blank')}
+              className='hidden lg:flex text-gray-300 hover:text-white transition-colors items-center'
             >
-              <ImageIcon className='w-4 h-4 sm:w-5 sm:h-5' />
-              <span className='hidden xl:inline text-sm'>Gallery</span>
+              <ImageIcon className='w-6 h-6 lg:w-7 lg:h-7' />
             </button>
           </div>
         </div>
+      </header>
 
-        {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <div className='lg:hidden mt-2 pb-4 border-t border-gray-200/20 sm:border-gray-300/30'>
-            <nav className='flex flex-col gap-4 pt-4'>
-              <Link
-                href='/#home'
-                onClick={closeMobileMenu}
-                className='text-gray-900 hover:text-blue-600 transition-colors font-medium text-lg py-2 px-4'
-              >
-                Home
-              </Link>
-              <Link
-                href='/#products'
-                onClick={closeMobileMenu}
-                className='text-gray-900 hover:text-blue-600 transition-colors font-medium text-lg py-2 px-4'
-              >
-                Products
-              </Link>
-              <Link
-                href='/about'
-                onClick={closeMobileMenu}
-                className='text-gray-900 hover:text-blue-600 transition-colors font-medium text-lg py-2 px-4'
-              >
-                About
-              </Link>
-              <Link
-                href='/#contact'
-                onClick={closeMobileMenu}
-                className='text-gray-900 hover:text-blue-600 transition-colors font-medium text-lg py-2 px-4'
-              >
-                Contact
-              </Link>
-              <div className='flex items-center gap-4 pt-2 border-t border-gray-200/20 sm:border-gray-300/30'>
-                <button 
-                  onClick={() => {
-                    window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank');
-                    closeMobileMenu();
-                  }}
-                  className='text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-2 text-lg py-2 px-4'
-                >
-                  <User className='w-5 h-5' />
-                  <span>Account</span>
-                </button>
-                <button 
-                  onClick={() => {
-                    window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank');
-                    closeMobileMenu();
-                  }}
-                  className='text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-2 text-lg py-2 px-4'
-                >
-                  <ImageIcon className='w-5 h-5' />
-                  <span>Gallery</span>
-                </button>
-              </div>
-            </nav>
+      {/* Mobile Navigation Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className='fixed inset-0 z-[9998] bg-black/40 backdrop-blur-sm' onClick={closeMobileMenu}>
+          <div 
+            className='absolute top-24 left-1/2 -translate-x-1/2 bg-[#0b132b] border border-white/10 rounded-3xl p-6 shadow-2xl w-[90vw] max-w-sm flex flex-col gap-4 animate-in slide-in-from-top-4'
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Link href='/#home' onClick={closeMobileMenu} className='text-gray-200 hover:text-white transition-colors font-medium text-lg'>Home</Link>
+            <Link href='/#products' onClick={closeMobileMenu} className='text-gray-200 hover:text-white transition-colors font-medium text-lg'>Products</Link>
+            <Link href='/about' onClick={closeMobileMenu} className='text-gray-200 hover:text-white transition-colors font-medium text-lg'>About</Link>
+            <Link href='/#contact' onClick={closeMobileMenu} className='text-gray-200 hover:text-white transition-colors font-medium text-lg'>Contact</Link>
+            <div className='flex items-center gap-4 pt-4 border-t border-white/10'>
+              <button onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech', '_blank')} className='text-gray-200 hover:text-white'>
+                <User className='w-6 h-6' />
+              </button>
+              <button onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech', '_blank')} className='text-gray-200 hover:text-white'>
+                <ImageIcon className='w-6 h-6' />
+              </button>
+            </div>
           </div>
-        )}
-      </div>
-    </header>
+        </div>
+      )}
+    </>
   );
 }
