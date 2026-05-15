@@ -33,7 +33,7 @@ export function SpacesSection() {
       {/* Category Selection Row */}
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
-          Explore by <span className="text-blue-300">Space</span>
+          Explore by <span className="text-amber-500">Space</span>
         </h2>
         <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-4">
           Discover furniture collections designed perfectly for every room.

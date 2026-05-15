@@ -1,16 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
 import Image from "next/image";
 
 export function InteriorDesignSection() {
-  const features = [
-    "Modern, Elegant Furniture Designs",
-    "Tailored to Your Space",
-    "Crafted for Comfort & Style",
-    "Premium Quality, Lasting Durability",
-  ];
 
   return (
     <section className="relative bg-gradient-to-br from-gray-50 to-white overflow-visible pt-[5vw] pb-[3vw] md:pt-[4vw] md:pb-[2vw]">
@@ -90,37 +82,17 @@ export function InteriorDesignSection() {
 
         {/* Right text and sofa */}
         <div className="relative order-3 lg:order-2 w-full pl-[5vw] max-sm:mt-[13vw] sm:pl-[8vw] md:pl-[6vw]">
-          <h2 className="text-[3vw] md:text-[2vw] font-semibold text-gray-900 leading-tight mb-[2vw]">
+          <h2 className="text-[5vw] md:text-[3.5vw] font-bold text-gray-900 leading-tight mb-[2vw]">
             We help you make
             <br />
             <span className="text-gray-900">Modern Interior Design</span>
           </h2>
 
-          <p className="text-[1.2vw] md:text-[0.9vw] text-gray-600 mb-[3vw] leading-relaxed max-w-[38vw] sm:max-w-[70vw]">
+          <p className="text-[1.8vw] md:text-[1.3vw] text-gray-600 mb-[3vw] leading-relaxed max-w-[38vw] sm:max-w-[70vw]">
             Transform your space into a reflection of your style. Our modern interior
             design approach brings harmony, texture, and creativity together to make
             every corner feel fresh, inviting, and uniquely yours.
           </p>
-
-          <div className="grid grid-cols-2 gap-y-[1.5vw] gap-x-[1vw] mb-[3vw]">
-            {features.map((feature, index) => (
-              <div key={index} className="flex items-start gap-[0.6vw]">
-                <div className="bg-gray-900 flex items-center justify-center rounded-full w-[1.3vw] h-[1.3vw] flex-shrink-0">
-                  <Check className="text-white w-[0.6vw] h-[0.6vw]" />
-                </div>
-                <span className="text-gray-700 text-[1vw] md:text-[0.8vw] leading-[1.3]">
-                  {feature}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <Button 
-            onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
-            className="bg-gray-900 hover:bg-gray-800 text-white text-[1vw] md:text-[0.85vw] px-[2vw] py-[1vw] rounded-full"
-          >
-            Explore
-          </Button>
 
           {/* Sofa image - Responsive positioning */}
           <div className="absolute 
