@@ -1,10 +1,6 @@
-"use client";
-
-import { useState } from 'react';
 import { Header } from '@/components/Header'
 import { HeroSection } from '@/components/HeroSection'
-import { FeaturedCollections } from '@/components/FeaturedCollections'
-import { ProductSection } from '@/components/ProductSection'
+import { InspirationSection } from '@/components/InspirationSection'
 import { SpacesSection } from '@/components/SpacesSection'
 import { InteriorDesignSection } from '@/components/InteriorDesignSection'
 import { TestimonialsSection } from '@/components/TestimonialsSection'
@@ -13,27 +9,17 @@ import { ContactSection } from '@/components/ContactSection'
 import { Footer } from '@/components/Footer'
 
 export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState('Chair');
-
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-  };
-
   return (
     <div className="min-h-screen">
       <Header />
       <section id="home">
         <HeroSection />
       </section>
-      <section id="products">
-        <FeaturedCollections 
-          activeCategory={selectedCategory} 
-          onCategoryChange={handleCategoryChange} 
-        />
-        <ProductSection selectedCategory={selectedCategory} />
-      </section>
       
-      {/* Explore By Space Section separated out as requested */}
+      {/* New Inspiration Section replacing FeaturedCollections */}
+      <InspirationSection />
+      
+      {/* Explore By Space Section */}
       <SpacesSection />
       
       <section id="about">
