@@ -10,7 +10,7 @@ export function InspirationSection() {
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-white overflow-hidden relative">
+    <section className="pt-28 sm:pt-60 bg-white relative" style={{ paddingBottom: '10rem' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-14 xl:gap-24 items-center">
 
