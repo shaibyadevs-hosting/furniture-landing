@@ -10,25 +10,25 @@ export function Footer() {
   const quickLinks = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
-    { label: "Modular Kitchen", href: "#products" },
-    { label: "Bedroom Furniture", href: "#products" },
-    { label: "Office Furniture", href: "#products" },
-    { label: "Home Furniture", href: "#products" },
-    { label: "Hotel Furniture", href: "#products" },
+    { label: "Modular Kitchen", href: "/products#modular-kitchen" },
+    { label: "Bedroom Furniture", href: "/products#bedroom-furniture" },
+    { label: "Office Furniture", href: "/products#office-furniture" },
+    { label: "Home Furniture", href: "/products#home-furniture" },
+    { label: "Hotel Furniture", href: "/products#hotel-furniture" },
     { label: "Our Clients", href: "#about" },
     { label: "Reviews", href: "#about" },
     { label: "Contact", href: "#contact" },
   ];
 
   const products = [
-    { label: "L-Shaped Kitchen", href: "#products" },
-    { label: "U-Shaped Kitchen", href: "#products" },
-    { label: "Island Kitchen", href: "#products" },
-    { label: "Modular Wardrobes", href: "#products" },
-    { label: "Study Furniture", href: "#products" },
-    { label: "Conference Tables", href: "#products" },
-    { label: "Hotel Suites", href: "#products" },
-    { label: "Custom Interiors", href: "#products" },
+    { label: "L-Shaped Kitchen", href: "/products" },
+    { label: "U-Shaped Kitchen", href: "/products" },
+    { label: "Island Kitchen", href: "/products" },
+    { label: "Modular Wardrobes", href: "/products" },
+    { label: "Study Furniture", href: "/products" },
+    { label: "Conference Tables", href: "/products" },
+    { label: "Hotel Suites", href: "/products" },
+    { label: "Custom Interiors", href: "/products" },
   ];
 
   const socials = [

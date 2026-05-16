@@ -40,7 +40,7 @@ export function Header() {
 
   const navLinks = [
     { label: 'Home', href: '/#home' },
-    { label: 'Products', href: '/#products' },
+    { label: 'Products', href: '/products' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/#contact' },
   ];
