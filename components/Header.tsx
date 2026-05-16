@@ -2,16 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { User, Image as ImageIcon, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 
 export function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const [isAtTop, setIsAtTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +38,13 @@ export function Header() {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
+  const navLinks = [
+    { label: 'Home', href: '/#home' },
+    { label: 'Products', href: '/#products' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: '/#contact' },
+  ];
+
   return (
     <>
       <header 
@@ -49,53 +54,60 @@ export function Header() {
         `}
       >
         <div 
-          className={`transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] flex items-center justify-between border overflow-hidden
+          className={`transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] flex items-center justify-between border
             ${isAtTop 
-              ? 'bg-[#0b132b] shadow-md rounded-none px-6 sm:px-12 md:px-16 py-4 sm:py-5 border-transparent border-b-white/10 gap-6 lg:gap-12' 
-              : 'bg-[#0b132b]/95 backdrop-blur-md shadow-2xl rounded-full p-2.5 sm:p-3 border-white/10 gap-4 lg:gap-8'
+              ? 'bg-[#0b132b]/95 backdrop-blur-md shadow-md rounded-none px-6 sm:px-12 py-4 border-transparent border-b-white/10' 
+              : 'bg-[#0b132b]/90 backdrop-blur-lg shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-full px-4 sm:px-6 py-2.5 border-white/10'
             }
           `}
         >
           
-          {/* Leftmost: Logo inside a white circle */}
-          <Link href='/' className='bg-white rounded-full p-2 sm:p-3 flex-shrink-0 flex items-center justify-center shadow-inner aspect-square' onClick={closeMobileMenu}>
-            <Image
-              src='/logo.png'
-              alt='Touchwood Logo'
-              width={80}
-              height={80}
-              className='w-10 h-10 sm:w-14 sm:h-14 object-contain'
-              unoptimized
-            />
+          {/* Brand Logo & Name */}
+          <Link href='/' className='flex items-center gap-3 group flex-shrink-0' onClick={closeMobileMenu}>
+            <div className={`flex items-center justify-center overflow-hidden transition-all duration-300 rounded-full bg-white shadow-inner
+              ${isAtTop ? 'w-12 h-12 p-2' : 'w-10 h-10 p-1.5'}`}
+            >
+              <Image
+                src='/logo.png'
+                alt='Touchwood Logo'
+                width={48}
+                height={48}
+                className={`object-contain transition-transform duration-300 group-hover:scale-110 w-full h-full`}
+                unoptimized
+              />
+            </div>
+            <span className={`text-white font-bold leading-none tracking-wide hidden sm:block ${!isAtTop && 'md:hidden lg:block'}`}>
+              <span className={`block transition-all ${isAtTop ? 'text-base' : 'text-sm'}`}>Touchwood</span>
+              <span className={`text-amber-400 font-medium uppercase tracking-[0.2em] block transition-all
+                ${isAtTop ? 'text-xs mt-1' : 'text-[10px] mt-0.5'}`}>
+                Furnitech
+              </span>
+            </span>
           </Link>
 
-          {/* Center Navigation */}
+          {/* Center Navigation (Desktop) */}
           <nav className='hidden lg:flex items-center gap-8 xl:gap-12'>
-            <Link href='/#home' className='text-gray-300 hover:text-white transition-colors font-medium text-base lg:text-lg'>Home</Link>
-            <Link href='/#products' className='text-gray-300 hover:text-white transition-colors font-medium text-base lg:text-lg'>Products</Link>
-            <Link href='/about' className='text-gray-300 hover:text-white transition-colors font-medium text-base lg:text-lg'>About</Link>
-            <Link href='/#contact' className='text-gray-300 hover:text-white transition-colors font-medium text-base lg:text-lg'>Contact</Link>
+            {navLinks.map((link) => (
+              <Link 
+                key={link.label}
+                href={link.href}
+                className='relative text-gray-300 hover:text-white transition-colors text-sm font-medium tracking-wide uppercase group py-2'
+              >
+                {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-500 transition-all duration-300 ease-out group-hover:w-full rounded-full"></span>
+              </Link>
+            ))}
           </nav>
 
-          {/* Rightmost: Icons & Mobile Menu Toggle */}
-          <div className='flex items-center gap-4 sm:gap-6 pr-3 sm:pr-6'>
+          {/* Rightmost: Mobile Menu Toggle */}
+          <div className='flex items-center gap-3 sm:gap-4'>
             {/* Mobile Menu Button */}
-            <button onClick={toggleMobileMenu} className='lg:hidden text-gray-200 hover:text-white transition-colors p-1' aria-label="Toggle menu">
-              {isMobileMenuOpen ? <X className='w-7 h-7' /> : <Menu className='w-7 h-7' />}
-            </button>
-
-            {/* Desktop Icons */}
             <button 
-              onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech', '_blank')}
-              className='hidden lg:flex text-gray-300 hover:text-white transition-colors items-center'
+              onClick={toggleMobileMenu} 
+              className='lg:hidden text-gray-200 hover:text-amber-400 transition-colors p-2 bg-white/5 rounded-full border border-white/10 active:scale-95' 
+              aria-label="Toggle menu"
             >
-              <User className='w-6 h-6 lg:w-7 lg:h-7' />
-            </button>
-            <button 
-              onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech', '_blank')}
-              className='hidden lg:flex text-gray-300 hover:text-white transition-colors items-center'
-            >
-              <ImageIcon className='w-6 h-6 lg:w-7 lg:h-7' />
+              {isMobileMenuOpen ? <X className='w-5 h-5 sm:w-6 sm:h-6' /> : <Menu className='w-5 h-5 sm:w-6 sm:h-6' />}
             </button>
           </div>
         </div>
@@ -103,22 +115,22 @@ export function Header() {
 
       {/* Mobile Navigation Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className='fixed inset-0 z-[9998] bg-black/40 backdrop-blur-sm' onClick={closeMobileMenu}>
+        <div className='fixed inset-0 z-[9998] bg-black/60 backdrop-blur-md' onClick={closeMobileMenu}>
           <div 
-            className='absolute top-24 left-1/2 -translate-x-1/2 bg-[#0b132b] border border-white/10 rounded-3xl p-6 shadow-2xl w-[90vw] max-w-sm flex flex-col gap-4 animate-in slide-in-from-top-4'
+            className='absolute top-24 left-1/2 -translate-x-1/2 bg-[#0b132b]/95 border border-white/10 rounded-3xl p-8 shadow-2xl w-[90vw] max-w-sm flex flex-col gap-6 animate-in slide-in-from-top-8 duration-300'
             onClick={(e) => e.stopPropagation()}
           >
-            <Link href='/#home' onClick={closeMobileMenu} className='text-gray-200 hover:text-white transition-colors font-medium text-lg'>Home</Link>
-            <Link href='/#products' onClick={closeMobileMenu} className='text-gray-200 hover:text-white transition-colors font-medium text-lg'>Products</Link>
-            <Link href='/about' onClick={closeMobileMenu} className='text-gray-200 hover:text-white transition-colors font-medium text-lg'>About</Link>
-            <Link href='/#contact' onClick={closeMobileMenu} className='text-gray-200 hover:text-white transition-colors font-medium text-lg'>Contact</Link>
-            <div className='flex items-center gap-4 pt-4 border-t border-white/10'>
-              <button onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech', '_blank')} className='text-gray-200 hover:text-white'>
-                <User className='w-6 h-6' />
-              </button>
-              <button onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech', '_blank')} className='text-gray-200 hover:text-white'>
-                <ImageIcon className='w-6 h-6' />
-              </button>
+            <div className="flex flex-col gap-5 text-center">
+              {navLinks.map((link) => (
+                <Link 
+                  key={link.label}
+                  href={link.href} 
+                  onClick={closeMobileMenu} 
+                  className='text-gray-300 hover:text-amber-400 transition-colors font-medium text-lg uppercase tracking-wider'
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

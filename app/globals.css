@@ -103,7 +103,7 @@
 /* Ensure images don't overflow on mobile and fix cropping */
 @media (max-width: 640px) {
   .hero-carousel {
-    min-height: 35vh !important;
+    min-height: 60vh !important;
   }
   
   .hero-carousel-bg {
@@ -148,3 +148,8 @@
     min-height: 100% !important;
   }
 }
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

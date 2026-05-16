@@ -14,14 +14,14 @@ interface Product {
 
 const spacesData: Record<string, { hero: string; tagline: string; products: Product[] }> = {
   "Modular Kitchen": {
-    hero: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1600&q=80",
+    hero: "/modular kitchen.png",
     tagline: "Precision-engineered kitchens built around how you live, cook, and gather.",
     products: [
-      { name: "Modern L-Shape Kitchen", price: "₹1,50,000", desc: "Efficient corner utilisation with sleek cabinetry and premium countertop finish.", image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=800&fit=crop" },
-      { name: "Island Kitchen Setup", price: "₹2,00,000", desc: "Open-plan island layout ideal for contemporary homes and entertaining spaces.", image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=800&fit=crop" },
+      { name: "Modern L-Shape Kitchen", price: "₹1,50,000", desc: "Efficient corner utilisation with sleek cabinetry and premium countertop finish.", image: "/L shaped kitchen.png" },
+      { name: "Island Kitchen Setup", price: "₹2,00,000", desc: "Open-plan island layout ideal for contemporary homes and entertaining spaces.", image: "/island kitchen.png" },
       { name: "Compact Modular Kitchen", price: "₹90,000", desc: "Smart, space-saving design without compromising on storage or aesthetics.", image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=800&fit=crop" },
       { name: "Premium Wood Kitchen", price: "₹2,50,000", desc: "Warm hardwood finishes paired with modern hardware for a timeless look.", image: "https://images.unsplash.com/photo-1556909190-eccf4a8bf97a?w=800&h=800&fit=crop" },
-      { name: "U-Shape Luxury Kitchen", price: "₹3,10,000", desc: "Maximum counter space in a three-wall layout for serious home chefs.", image: "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800&h=800&fit=crop" },
+      { name: "U-Shape Luxury Kitchen", price: "₹3,10,000", desc: "Maximum counter space in a three-wall layout for serious home chefs.", image: "/u shaped kitchen.png" },
       { name: "Minimalist White Kitchen", price: "₹1,80,000", desc: "Handle-less cabinets and pure white surfaces for a clean, airy feel.", image: "https://images.unsplash.com/photo-1556911261-6bd341186b2f?w=800&h=800&fit=crop" },
       { name: "Classic Italian Kitchen", price: "₹2,80,000", desc: "Old-world Italian craftsmanship meets contemporary Indian living standards.", image: "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=800&h=800&fit=crop" },
       { name: "Smart Urban Kitchen", price: "₹1,20,000", desc: "Tech-integrated kitchen with soft-close drawers and smart storage solutions.", image: "https://images.unsplash.com/photo-1556910110-a5a63dfd3938?w=800&h=800&fit=crop" },
@@ -56,10 +56,10 @@ const spacesData: Record<string, { hero: string; tagline: string; products: Prod
     ],
   },
   "Hotel Furniture": {
-    hero: "https://images.unsplash.com/photo-1582719478250-c894e4dc24cb?w=1600&q=80",
+    hero: "/hotel furniture.png",
     tagline: "Hospitality interiors that leave lasting impressions on every guest.",
     products: [
-      { name: "Lobby Seating Array", price: "₹1,20,000", desc: "Modular lobby seating in premium fabric with solid wood legs and arm panels.", image: "https://images.unsplash.com/photo-1582719478250-c894e4dc24cb?w=800&h=800&fit=crop" },
+      { name: "Lobby Seating Array", price: "₹1,20,000", desc: "Modular lobby seating in premium fabric with solid wood legs and arm panels.", image: "/hotel furniture.png" },
       { name: "Premium Suite Bed", price: "₹75,000", desc: "King-size hotel bed with tufted headboard and pull-out trundle option.", image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=800&fit=crop" },
       { name: "Banquet Chairs Set", price: "₹40,000", desc: "Stackable banquet chairs in gold or silver frame with padded seat covers.", image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&h=800&fit=crop" },
       { name: "Reception Desk", price: "₹85,000", desc: "Curved hotel reception with stone top and brass or chrome accent detailing.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=800&fit=crop" },
@@ -70,10 +70,10 @@ const spacesData: Record<string, { hero: string; tagline: string; products: Prod
     ],
   },
   "Home Furniture": {
-    hero: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1600&q=80",
+    hero: "/Home furniture.png",
     tagline: "Every corner of your home, elevated with purposeful design.",
     products: [
-      { name: "Complete Living Room Set", price: "₹1,10,000", desc: "3+1+1 sofa arrangement with matching coffee table and side tables.", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=800&fit=crop" },
+      { name: "Complete Living Room Set", price: "₹1,10,000", desc: "3+1+1 sofa arrangement with matching coffee table and side tables.", image: "/Home furniture.png" },
       { name: "Dining Room Package", price: "₹65,000", desc: "6-seater dining table with upholstered chairs in coordinated fabric.", image: "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=800&h=800&fit=crop" },
       { name: "Entertainment Unit", price: "₹35,000", desc: "Wall-mounted TV unit with open shelves, closed cabinets, and LED backlight.", image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800&h=800&fit=crop" },
       { name: "Balcony Setup", price: "₹18,000", desc: "Compact outdoor bistro set in rust-proof aluminium for balcony or patio.", image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=800&fit=crop" },

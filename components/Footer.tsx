@@ -209,8 +209,16 @@ export function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/5">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600">
-          <p>© {new Date().getFullYear()} Touchwood Furnitech Pvt. Ltd. All rights reserved.</p>
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 py-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-left">
+            <p>© {new Date().getFullYear()} Touchwood Furnitech Pvt. Ltd. All rights reserved.</p>
+            <p className="flex items-center gap-1">
+              Made and managed by 
+              <a href="https://www.shaibyasolutions.com" target="_blank" rel="noopener noreferrer" className="text-amber-500/80 hover:text-amber-400 transition-colors">
+                Shaibya Solutions
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-4">
             <a href="#" className="hover:text-amber-400 transition-colors">Privacy Policy</a>
             <span className="text-gray-700">·</span>

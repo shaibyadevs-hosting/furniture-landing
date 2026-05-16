@@ -9,10 +9,10 @@ export function SpacesSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const bentoSquares = [
-    { name: "Modular Kitchen", link: "modular-kitchen", image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=800&fit=crop" },
+    { name: "Modular Kitchen", link: "modular-kitchen", image: "/modular kitchen.png" },
     { name: "Office Furniture", link: "office-furniture", image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=800&h=800&fit=crop" },
-    { name: "Hotel Furniture", link: "hotel-furniture", image: "https://images.unsplash.com/photo-1582719478250-c894e4dc24cb?w=800&h=800&fit=crop" },
-    { name: "Home Furniture", link: "home-furniture", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=800&fit=crop" }
+    { name: "Hotel Furniture", link: "hotel-furniture", image: "/hotel furniture.png" },
+    { name: "Home Furniture", link: "home-furniture", image: "/Home furniture.png" }
   ];
 
   const slideshowProducts = [
@@ -41,10 +41,10 @@ export function SpacesSection() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 min-h-[500px] lg:min-h-[600px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 lg:h-[600px]">
           
           {/* Left Side: Slideshow Block */}
-          <div className="relative rounded-2xl overflow-hidden group min-h-[400px] lg:min-h-full shadow-lg">
+          <div className="relative rounded-2xl overflow-hidden group h-[380px] sm:h-[450px] lg:h-full shadow-lg">
             {slideshowProducts.map((slide, index) => (
               <div 
                 key={index} 
@@ -82,7 +82,7 @@ export function SpacesSection() {
           </div>
 
           {/* Right Side: 4 Squares Masonry */}
-          <div className="grid grid-cols-2 gap-4 lg:gap-6 min-h-[500px] lg:min-h-full">
+          <div className="grid grid-cols-2 gap-4 lg:gap-6 h-[460px] sm:h-[520px] lg:h-full">
             {/* Column 1 */}
             <div className="flex flex-col gap-4 lg:gap-6 h-full">
               {/* Top Left - Shorter */}

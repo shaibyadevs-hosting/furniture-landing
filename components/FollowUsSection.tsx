@@ -109,13 +109,6 @@ export function FollowUsSection() {
         </a>
       </div>
 
-      {/* Keyframe animation */}
-      <style jsx global>{`
-        @keyframes marquee {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
     </section>
   );
 }

@@ -28,7 +28,7 @@ export function HeroSection() {
 
   return (
     <section 
-      className='hero-carousel relative min-h-[50vh] sm:min-h-[80vh] md:min-h-screen flex flex-col justify-end overflow-hidden'
+      className='hero-carousel relative min-h-[65vh] sm:min-h-[80vh] md:min-h-screen flex flex-col justify-end overflow-hidden'
     >
       {/* Background images (No zoom, full size) */}
       {heroImages.map((image, index) => (
@@ -57,7 +57,7 @@ export function HeroSection() {
       {/* Text Content - Moved to the bottom */}
       <div className='container mx-auto px-6 sm:px-12 relative z-30 pb-20 sm:pb-32 lg:pb-40'>
         <div className={`max-w-4xl transition-all duration-1000 transform translate-y-0 opacity-100`}>
-          <h1 className='text-4xl sm:text-5xl md:text-7xl font-light text-white mb-4 leading-tight tracking-tight drop-shadow-lg'>
+          <h1 className='text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-3 sm:mb-4 leading-tight tracking-tight drop-shadow-lg'>
             Crafting <span className='font-bold text-white'>Comfort</span> <br className="hidden sm:block" />
             & <span className='font-bold text-white'>Elegance</span>
           </h1>
