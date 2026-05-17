@@ -65,12 +65,7 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           {product.name}
         </h3>
 
-        {/* Price */}
-        {product.price && (
-          <p className="text-amber-400 text-xs sm:text-sm font-semibold mt-1">
-            {product.price}
-          </p>
-        )}
+
 
         {/* Desc + CTA — slides in on hover/tap */}
         <div

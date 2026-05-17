@@ -64,13 +64,13 @@ export function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             {/* Logo */}
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center overflow-hidden">
+              <div className="w-12 h-12 rounded-xl bg-white shadow-inner flex items-center justify-center overflow-hidden p-1.5">
                 <Image
                   src="/logo.png"
                   alt="Touchwood Furnitech"
                   width={40}
                   height={40}
-                  className="object-contain"
+                  className="object-contain w-full h-full"
                   onError={(e) => {
                     // fallback if logo missing
                     (e.target as HTMLImageElement).style.display = "none";

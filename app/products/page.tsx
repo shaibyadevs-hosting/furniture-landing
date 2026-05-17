@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { spacesData } from "@/lib/data";
 import { ProductCard } from "@/components/ProductCard";
+import { MessageCircle, ArrowRight } from "lucide-react";
 
 export const metadata = {
   title: "All Products | Touchwood Furnitech",
@@ -58,6 +59,25 @@ export default function ProductsPage() {
               </section>
             );
           })}
+
+          {/* CTA strip */}
+          <div className="mt-20 rounded-3xl bg-[#0b132b] px-8 sm:px-12 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <p className="text-amber-400 text-xs font-bold tracking-widest uppercase mb-2">Custom Order</p>
+              <h3 className="text-white text-2xl sm:text-3xl font-bold">Don't see what you need?</h3>
+              <p className="text-white/50 text-sm mt-1">We build fully bespoke — just describe your vision.</p>
+            </div>
+            <a
+              href={`https://api.whatsapp.com/send?phone=917722008401&text=${encodeURIComponent(`Hello! I need a custom furniture solution. Can you help?`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 inline-flex items-center gap-2.5 bg-amber-500 hover:bg-amber-400 text-[#0b132b] font-bold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,158,11,0.3)]"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Talk to Us
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
 
         </div>
       </main>
