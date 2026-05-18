@@ -64,7 +64,7 @@ export function ProcessSection() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="bg-[#f7f5f2] py-24 sm:py-32 overflow-hidden">
+    <section className="bg-[#fcfbf9] py-24 sm:py-32 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         
         {/* Header */}

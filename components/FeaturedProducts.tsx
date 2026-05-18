@@ -18,7 +18,7 @@ export function FeaturedProducts() {
   }
 
   return (
-    <section className="bg-[#f9f7f4] py-20 sm:py-28 lg:py-32">
+    <section className="bg-[#fcfbf9] py-20 sm:py-28 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div 

@@ -1,6 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import { FloatingContact } from "@/components/FloatingContact";
+import { Preloader } from "@/components/Preloader";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -20,7 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={outfit.className}>{children}</body>
+      <body className={outfit.className}>
+        <Preloader />
+        {children}
+        <FloatingContact />
+      </body>
     </html>
   );
 }

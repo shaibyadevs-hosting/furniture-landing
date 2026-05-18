@@ -20,7 +20,7 @@ const TRACK = [...POSTS, ...POSTS];
 
 export function FollowUsSection() {
   return (
-    <section className="bg-white py-20 sm:py-28 overflow-hidden">
+    <section className="bg-[#fcfbf9] py-20 sm:py-28 overflow-hidden">
       {/* Header */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-14 text-center">
         <div className="flex items-center justify-center gap-4 mb-5">

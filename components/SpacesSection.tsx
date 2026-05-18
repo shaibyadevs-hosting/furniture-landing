@@ -29,7 +29,7 @@ export function SpacesSection() {
   }, [slideshowProducts.length]);
 
   return (
-    <div className="py-12 sm:py-16">
+    <section className="bg-[#fcfbf9] py-16 sm:py-20 lg:py-24">
       {/* Category Selection Row */}
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
@@ -144,6 +144,6 @@ export function SpacesSection() {
 
         </div>
       </div>
-    </div>
+    </section>
   );
 }

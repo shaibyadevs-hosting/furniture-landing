@@ -36,6 +36,11 @@ function TransformationCard({ beforeImg, afterImg, category, title, desc, link }
     setSliderPosition(percent);
   };
 
+  const handleInteractionEnd = () => {
+    setIsHovered(false);
+    setSliderPosition(50);
+  };
+
   // Animate slider briefly on mount
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -58,7 +63,8 @@ function TransformationCard({ beforeImg, afterImg, category, title, desc, link }
         onMouseMove={handleMove}
         onTouchMove={handleMove}
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseLeave={handleInteractionEnd}
+        onTouchEnd={handleInteractionEnd}
       >
         {/* After Image (Background) */}
         <div className="absolute inset-0">
@@ -121,38 +127,38 @@ export function TransformationsSection() {
       category: "Modular Kitchen",
       title: "Contemporary L-Shaped Kitchen",
       desc: "Transforming a dated, cramped kitchen into an open, modern culinary space.",
-      beforeImg: "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=1200&q=80",
-      afterImg: "/L shaped kitchen.png",
+      beforeImg: "/kitchen before.png",
+      afterImg: "/kitchen after.png",
       link: "/category/modular-kitchen"
     },
     {
       category: "Bedroom Furniture",
       title: "Luxury Wardrobe & Bed Suite",
       desc: "A complete overhaul creating a serene, bespoke master bedroom environment.",
-      beforeImg: "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1200&q=80",
-      afterImg: "/hotel furniture.png",
+      beforeImg: "/bedroom before.png",
+      afterImg: "/bedroom after.png",
       link: "/category/bedroom-furniture"
     },
     {
       category: "Office Interiors",
       title: "Executive Workspace Transformation",
       desc: "Upgrading a standard room into a premium, highly functional executive office.",
-      beforeImg: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&q=80",
-      afterImg: "/office desk.png",
+      beforeImg: "/office before .png",
+      afterImg: "/office after.png",
       link: "/category/office-furniture"
     },
     {
       category: "Home Furniture",
       title: "Elegant Living Room Setup",
       desc: "Bringing warmth and elegance to an empty living area with custom furniture.",
-      beforeImg: "https://images.unsplash.com/photo-1583847268964-b28ce8f31586?w=1200&q=80",
-      afterImg: "/Home furniture.png",
+      beforeImg: "/living room before.png",
+      afterImg: "/living room after.png",
       link: "/category/home-furniture"
     }
   ];
 
   return (
-    <section className="bg-white py-20 sm:py-28 lg:py-32">
+    <section className="bg-[#fcfbf9] py-20 sm:py-28 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

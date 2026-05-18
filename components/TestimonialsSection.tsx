@@ -119,7 +119,7 @@ export function TestimonialsSection() {
   }, [emblaApi, completedOnce]);
 
   return (
-    <section className="bg-[#f4f1eb] py-16 sm:py-24 lg:py-32 overflow-hidden mt-[8vw] sm:mt-[6vw] lg:mt-[4vw]">
+    <section className="bg-[#fcfbf9] py-16 sm:py-24 lg:py-32 overflow-hidden mt-[8vw] sm:mt-[6vw] lg:mt-[4vw]">
       {/* Header */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
         <div className="flex items-center justify-center gap-4 mb-6">

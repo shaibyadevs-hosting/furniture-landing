@@ -5,16 +5,18 @@ import { FeaturedProducts } from '@/components/FeaturedProducts'
 import { SpacesSection } from '@/components/SpacesSection'
 import { TransformationsSection } from '@/components/TransformationsSection'
 import { ProcessSection } from '@/components/ProcessSection'
-import { InteriorDesignSection } from '@/components/InteriorDesignSection'
+import { WhyChooseUsSection } from '@/components/WhyChooseUsSection'
 import { TestimonialsSection } from '@/components/TestimonialsSection'
 import { ClientsSection } from '@/components/ClientsSection'
+import { AboutSection } from '@/components/AboutSection'
 import { FollowUsSection } from '@/components/FollowUsSection'
+import { FAQSection } from '@/components/FAQSection'
 import { ContactSection } from '@/components/ContactSection'
 import { Footer } from '@/components/Footer'
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#fcfbf9]">
       <Header />
       <section id="home">
         <HeroSection />
@@ -36,12 +38,14 @@ export default function Home() {
       <ProcessSection />
       
       <section id="about">
-        <InteriorDesignSection />
+        <WhyChooseUsSection />
         <TestimonialsSection />
         <ClientsSection />
+        <AboutSection />
         <FollowUsSection />
       </section>
       <section id="contact">
+        <FAQSection />
         <ContactSection />
       </section>
       <Footer />

@@ -45,7 +45,7 @@ function AnimatedCounter({ end, suffix, label }: { end: number, suffix: string, 
 
 export function InspirationSection() {
   return (
-    <section className="bg-[#fdfbf9] relative py-20 sm:py-28 lg:py-32 overflow-hidden">
+    <section className="bg-[#fcfbf9] relative py-20 sm:py-28 lg:py-32 overflow-hidden">
       {/* Subtle Background Texture */}
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-30 pointer-events-none" />
 
