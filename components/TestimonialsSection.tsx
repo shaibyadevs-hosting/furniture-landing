@@ -130,7 +130,7 @@ export function TestimonialsSection() {
           <div className="h-px w-8 sm:w-16 bg-amber-600/30" />
         </div>
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-          What Our Clients Say
+          What Our Customers Say
         </h2>
       </div>
 
@@ -184,7 +184,7 @@ export function TestimonialsSection() {
                     "{t.message}"
                   </p>
 
-                  {/* Client Info */}
+                  {/* Customer Info */}
                   <div className="flex items-center gap-4 mt-auto pt-4 border-t border-black/5">
                     <div
                       className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg
