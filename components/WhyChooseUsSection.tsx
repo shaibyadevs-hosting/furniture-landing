@@ -71,7 +71,7 @@ export function WhyChooseUsSection() {
               transition={{ delay: 0.4, duration: 0.5, type: "spring" }}
               className="absolute -bottom-8 -right-4 sm:-right-8 bg-white p-6 sm:p-8 rounded-[28px] shadow-[0_15px_40px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col items-center justify-center min-w-[160px] sm:min-w-[200px]"
             >
-              <span className="text-4xl sm:text-5xl font-bold text-[#0b132b] mb-1 tracking-tight">15+</span>
+              <span className="text-4xl sm:text-5xl font-bold text-[#0b132b] mb-1 tracking-tight">8+</span>
               <span className="text-amber-600 font-bold text-xs sm:text-sm uppercase tracking-widest text-center leading-tight">
                 Years of<br />Excellence
               </span>

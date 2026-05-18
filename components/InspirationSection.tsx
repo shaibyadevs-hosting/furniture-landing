@@ -126,7 +126,7 @@ export function InspirationSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="grid grid-cols-2 gap-4 sm:gap-5"
             >
-              <AnimatedCounter end={15} suffix="+" label="Years of Experience" />
+              <AnimatedCounter end={8} suffix="+" label="Years of Experience" />
               <AnimatedCounter end={500} suffix="+" label="Projects Completed" />
               <AnimatedCounter end={1000} suffix="+" label="Happy Clients" />
               <AnimatedCounter end={50} suffix="+" label="Design Experts" />
