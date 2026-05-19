@@ -1,11 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle, ArrowRight } from "lucide-react";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -13,164 +9,111 @@ export function ContactSection() {
     phoneOrEmail: "",
     message: "",
   });
+  const [focused, setFocused] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // WhatsApp number from contact info (with country code for India: +91)
     const whatsappNumber = "917722008401";
-    
-    // Format the message
-    let formattedMessage = `Hello Touchwood Furnitech! 👋\n\n`;
-    formattedMessage += `*Name:* ${formData.fullName}\n`;
-    
+    let msg = `Hello Touchwood Furnitech! 👋\n\n`;
+    msg += `*Name:* ${formData.fullName}\n`;
     if (formData.phoneOrEmail) {
-      // Check if it's an email or phone
-      const isEmail = formData.phoneOrEmail.includes('@');
-      if (isEmail) {
-        formattedMessage += `*Email:* ${formData.phoneOrEmail}\n`;
-      } else {
-        formattedMessage += `*Phone:* ${formData.phoneOrEmail}\n`;
-      }
+      const isEmail = formData.phoneOrEmail.includes("@");
+      msg += isEmail
+        ? `*Email:* ${formData.phoneOrEmail}\n`
+        : `*Phone:* ${formData.phoneOrEmail}\n`;
     }
-    
-    formattedMessage += `\n*Message:*\n${formData.message || 'No message provided'}`;
-    
-    // Encode the message for URL (using encodeURIComponent for proper encoding)
-    const encodedMessage = encodeURIComponent(formattedMessage);
-    
-    // Create WhatsApp URL - try api.whatsapp.com first for better desktop app support
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
-    
-    // Open WhatsApp (will open in app if installed, otherwise web)
-    // Using location.href for better desktop app support
-    window.location.href = whatsappUrl;
+    msg += `\n*Message:*\n${formData.message || "No message provided"}`;
+    window.location.href = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(msg)}`;
   };
 
+  const contactDetails = [
+    {
+      icon: MapPin,
+      label: "Visit Us",
+      value: "Touchwood Furnitures, Paradsinga, Nagpur — 440016",
+      href: "https://www.google.com/maps/place/Touchwood+Furnitech/@21.1376805,78.9978922",
+    },
+    {
+      icon: Phone,
+      label: "Call Us",
+      value: "7722008401 / 7722001171",
+      href: "tel:7722008401",
+    },
+    {
+      icon: Mail,
+      label: "Email Us",
+      value: "Touchwoodfurnitech225@gmail.com",
+      href: "mailto:Touchwoodfurnitech225@gmail.com",
+    },
+  ];
+
   return (
-    <section className='py-12 sm:py-16 lg:py-20 bg-gray-50'>
-      <div className='container mx-auto px-4 sm:px-6'>
-        <div className='text-center mb-10 sm:mb-12 lg:mb-16'>
-          <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 px-4'>
-            Get in <span className='text-blue-500'>Touch</span> With Us
+    <section
+      id="contact"
+      className="relative bg-[#0b132b] overflow-hidden py-24 sm:py-32"
+    >
+      {/* Decorative background circles */}
+      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-white/[0.02] pointer-events-none" />
+      <div className="absolute -bottom-60 -left-40 w-[700px] h-[700px] rounded-full bg-white/[0.02] pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16 sm:mb-20">
+          <div className="flex items-center justify-center gap-4 mb-5">
+            <div className="h-px w-12 bg-amber-500/40" />
+            <span className="text-amber-500 font-bold text-xs tracking-[0.3em] uppercase">
+              Contact Us
+            </span>
+            <div className="h-px w-12 bg-amber-500/40" />
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            Let's Build Something
+            <br />
+            <span className="text-amber-400">Beautiful Together</span>
           </h2>
+          <p className="mt-5 text-gray-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+            Have a project in mind? We'd love to hear about it. Drop us a
+            message and we'll get back to you within 24 hours.
+          </p>
         </div>
 
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-6xl mx-auto'>
-          <div>
-            <form onSubmit={handleSubmit} className='border-2 border-gray-200 rounded-lg p-6 space-y-4 sm:space-y-6'>
-              <div>
-                <Label
-                  htmlFor='fullName'
-                  className='text-gray-900 font-medium text-sm sm:text-base'
-                >
-                  Full Name*
-                </Label>
-                <Input
-                  id='fullName'
-                  placeholder='Enter your full name'
-                  value={formData.fullName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, fullName: e.target.value })
-                  }
-                  className='mt-1.5 sm:mt-2'
-                  required
-                />
-              </div>
-
-              <div>
-                <Label
-                  htmlFor='phoneOrEmail'
-                  className='text-gray-900 font-medium text-sm sm:text-base'
-                >
-                  Phone Number or Email
-                </Label>
-                <Input
-                  id='phoneOrEmail'
-                  type='text'
-                  placeholder='Enter your phone number or email'
-                  value={formData.phoneOrEmail}
-                  onChange={(e) =>
-                    setFormData({ ...formData, phoneOrEmail: e.target.value })
-                  }
-                  className='mt-1.5 sm:mt-2'
-                />
-              </div>
-
-              <div>
-                <Label
-                  htmlFor='message'
-                  className='text-gray-900 font-medium text-sm sm:text-base'
-                >
-                  Message*
-                </Label>
-                <Textarea
-                  id='message'
-                  placeholder='Enter your message here...'
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  className='mt-1.5 sm:mt-2 min-h-[100px] sm:min-h-[120px]'
-                  required
-                />
-              </div>
-
-              <Button
-                type='submit'
-                className='w-full bg-gray-900 hover:bg-gray-800 text-white py-4 sm:py-6 text-sm sm:text-base'
+        <div className="grid lg:grid-cols-5 gap-10 xl:gap-16 max-w-6xl mx-auto items-start">
+          {/* Left: Contact info + map */}
+          <div className="lg:col-span-2 space-y-5">
+            {contactDetails.map(({ icon: Icon, label, value, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10
+                  hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
               >
-                Send via WhatsApp
-              </Button>
-            </form>
-          </div>
-
-          <div>
-            <div className='bg-blue-50 rounded-lg p-4 sm:p-6 mb-4 sm:mb-6'>
-              <div className='flex items-start gap-2 sm:gap-3'>
-                <MapPin className='w-4 h-4 sm:w-5 sm:h-5 text-gray-600 mt-1 flex-shrink-0' />
+                <div className="w-11 h-11 rounded-xl bg-amber-500/15 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/25 transition-colors duration-300">
+                  <Icon className="w-5 h-5 text-amber-400" />
+                </div>
                 <div>
-                  <h3 className='text-blue-400 font-semibold mb-1 sm:mb-2 text-sm sm:text-base'>
-                    Our Location
-                  </h3>
-                  <p className='text-gray-900 font-medium text-xs sm:text-sm'>
-                    Touchwood Furnitures, Paradsinga,
-                    <br />
-                    Nagpur - 440016
+                  <p className="text-gray-500 text-xs font-semibold uppercase tracking-widest mb-1">
+                    {label}
+                  </p>
+                  <p className="text-white text-sm sm:text-base font-medium leading-snug">
+                    {value}
                   </p>
                 </div>
-              </div>
-            </div>
+                <ArrowRight className="w-4 h-4 text-gray-600 ml-auto self-center group-hover:text-amber-400 group-hover:translate-x-1 transition-all duration-300" />
+              </a>
+            ))}
 
-            {/* Contact Info */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
-              <h3 className="text-blue-600 font-semibold text-sm sm:text-base mb-3 sm:mb-4 flex items-center gap-2">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
-                Contact Information
-              </h3>
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-start gap-2 sm:gap-3">
-                  <Mail className='w-4 h-4 sm:w-5 sm:h-5 text-gray-600 mt-0.5 flex-shrink-0' />
-                  <div>
-                    <p className='text-gray-900 font-medium text-xs sm:text-sm'>
-                      Email: <a href="mailto:Touchwoodfurnitech225@gmail.com" className='hover:text-blue-600 hover:underline'>Touchwoodfurnitech225@gmail.com</a>
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2 sm:gap-3">
-                  <Phone className='w-4 h-4 sm:w-5 sm:h-5 text-gray-600 mt-0.5 flex-shrink-0' />
-                  <div>
-                    <p className='text-gray-900 font-medium text-xs sm:text-sm'>
-                      Phone: <a href="tel:7722008401" className='hover:text-blue-600 hover:underline'>7722008401</a> / <a href="tel:7722001171" className='hover:text-blue-600 hover:underline'>7722001171</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Square Map Container */}
-            <div className='bg-gray-200 rounded-lg overflow-hidden aspect-[9/6] border-2 border-blue-300 relative group cursor-pointer'
-                 onClick={() => window.open('https://www.google.com/maps/place/Touchwood+Furnitech/@21.1376805,78.9978922,1194m/data=!3m1!1e3!4m6!3m5!1s0x3bd4eb34a17e59a7:0x61f82a1a75768ec8!8m2!3d21.1378608!4d78.9979687!16s%2Fg%2F11t7m2cx46?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D', '_blank')}>
+            {/* Embedded Map */}
+            <div
+              className="rounded-2xl overflow-hidden border border-white/10 aspect-[4/3] cursor-pointer group relative mt-2"
+              onClick={() =>
+                window.open(
+                  "https://www.google.com/maps/place/Touchwood+Furnitech/@21.1376805,78.9978922",
+                  "_blank"
+                )
+              }
+            >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.123456789!2d78.9978922!3d21.1376805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4eb34a17e59a7%3A0x61f82a1a75768ec8!2sTouchwood%20Furnitech!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin&output=embed&iwloc=near&t=m"
                 width="100%"
@@ -179,20 +122,106 @@ export function ContactSection() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Touchwood Furnitech Location - Nagpur"
-                className="w-full h-full"
-              ></iframe>
-              
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="bg-white rounded-lg px-4 py-2 shadow-lg">
-                  <p className="text-sm font-semibold text-gray-800 flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-red-600" />
-                    View on larger map
-                  </p>
-                </div>
+                title="Touchwood Furnitech Location"
+                className="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
+              />
+              <div className="absolute inset-0 bg-[#0b132b]/40 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
+              <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs font-semibold text-gray-800 flex items-center gap-1.5 shadow-lg">
+                <MapPin className="w-3 h-3 text-red-500" />
+                Open in Maps
               </div>
             </div>
+          </div>
+
+          {/* Right: Form */}
+          <div className="lg:col-span-3">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white/5 border border-white/10 rounded-3xl p-8 sm:p-10 space-y-6"
+            >
+              <div className="space-y-1">
+                <label
+                  htmlFor="fullName"
+                  className="block text-xs font-semibold text-gray-400 uppercase tracking-widest"
+                >
+                  Full Name <span className="text-amber-500">*</span>
+                </label>
+                <input
+                  id="fullName"
+                  type="text"
+                  placeholder="e.g. Rahul Sharma"
+                  value={formData.fullName}
+                  onChange={(e) =>
+                    setFormData({ ...formData, fullName: e.target.value })
+                  }
+                  onFocus={() => setFocused("fullName")}
+                  onBlur={() => setFocused(null)}
+                  required
+                  className={`w-full bg-white/8 border rounded-xl px-5 py-4 text-white placeholder-gray-600 text-sm outline-none transition-all duration-300
+                    ${focused === "fullName" ? "border-amber-500 bg-white/10" : "border-white/10 bg-white/5"}`}
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label
+                  htmlFor="phoneOrEmail"
+                  className="block text-xs font-semibold text-gray-400 uppercase tracking-widest"
+                >
+                  Phone or Email
+                </label>
+                <input
+                  id="phoneOrEmail"
+                  type="text"
+                  placeholder="Your phone number or email address"
+                  value={formData.phoneOrEmail}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phoneOrEmail: e.target.value })
+                  }
+                  onFocus={() => setFocused("phoneOrEmail")}
+                  onBlur={() => setFocused(null)}
+                  className={`w-full border rounded-xl px-5 py-4 text-white placeholder-gray-600 text-sm outline-none transition-all duration-300
+                    ${focused === "phoneOrEmail" ? "border-amber-500 bg-white/10" : "border-white/10 bg-white/5"}`}
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label
+                  htmlFor="message"
+                  className="block text-xs font-semibold text-gray-400 uppercase tracking-widest"
+                >
+                  Message <span className="text-amber-500">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  rows={5}
+                  placeholder="Tell us about your project, budget, or requirements..."
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                  onFocus={() => setFocused("message")}
+                  onBlur={() => setFocused(null)}
+                  required
+                  className={`w-full border rounded-xl px-5 py-4 text-white placeholder-gray-600 text-sm outline-none transition-all duration-300 resize-none
+                    ${focused === "message" ? "border-amber-500 bg-white/10" : "border-white/10 bg-white/5"}`}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-amber-500 hover:bg-amber-400 text-[#0b132b] font-bold py-4 rounded-xl text-sm sm:text-base
+                  flex items-center justify-center gap-3 transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,158,11,0.3)]
+                  active:scale-[0.98] group"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Send via WhatsApp
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+
+              <p className="text-center text-gray-600 text-xs">
+                You'll be redirected to WhatsApp to complete your message.
+              </p>
+            </form>
           </div>
         </div>
       </div>

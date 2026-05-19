@@ -128,19 +128,6 @@ export function ProductSection({ selectedCategory }: ProductSectionProps) {
       },
     ],
   };
-  
-  
-
-  const latestProducts: Product[] = [
-    {
-      name: "Velvet Midnight Natural Sofa",
-      price: "₹5,000.00",
-      image: "/hero/Elegant_emerald_green_velvet_sofa_with_wooden_legs_in_minimalist_setting.png",
-    },
-    { name: "Modern Furniture Sofa", price: "₹5,000.00", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=800&fit=crop" },
-    { name: "Modern Furniture Set", price: "₹5,000.00", image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=800&fit=crop" },
-    { name: "Furniture Sofa Set", price: "₹5,000.00", image: "/hero/Premium_L-shaped_sectional_sofa_in_charcoal_gray_with_wooden_base.png" },
-  ];
 
   // Get products for the selected category
   const popularProducts = productsByCategory[selectedCategory as keyof typeof productsByCategory] || productsByCategory.Chair;
@@ -195,26 +182,8 @@ export function ProductSection({ selectedCategory }: ProductSectionProps) {
           </button>
         </div>
 
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-12 sm:mb-16 lg:mb-20'>
-          {popularProducts.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
-        </div>
-
-        <div className='flex items-center justify-between mb-6 sm:mb-8'>
-          <h2 className='text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900'>
-            Latest Product
-          </h2>
-          <button 
-            onClick={() => window.open('https://www.instagram.com/touchwoodfurnitech?igsh=MTdjNmw5c3p0cWVrZw%3D%3D&utm_source=qr', '_blank')}
-            className='text-blue-600 hover:text-blue-700 font-semibold text-sm sm:text-base'
-          >
-            See all
-          </button>
-        </div>
-
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6'>
-          {latestProducts.map((product, index) => (
+          {popularProducts.map((product, index) => (
             <ProductCard key={index} product={product} />
           ))}
         </div>

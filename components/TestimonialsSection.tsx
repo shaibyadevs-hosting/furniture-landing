@@ -1,271 +1,252 @@
 "use client";
 
-import Image from "next/image";
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const testimonials = [
+  {
+    id: 1,
+    name: "Ashwin Sathwane",
+    title: "Homeowner",
+    message:
+      "I got best Modular kitchen manufacturers in Nagpur. Very good experience in Best Modular furniture in town. Touchwood Furnitech specializes in premium modular kitchens with modern designs and long-lasting durability.",
+    theme: "light",
+  },
+  {
+    id: 2,
+    name: "Prasenjit Mallick",
+    title: "Homeowner",
+    message:
+      "Absolutely brilliant service from Touchwood Furnitech. From ordering to delivery it was so easy and we are delighted with the quality as well. The staff were very professional and pleasant, I myself am very satisfied.",
+    theme: "dark",
+  },
+  {
+    id: 3,
+    name: "Nikhil Tidke",
+    title: "Interior Enthusiast",
+    message:
+      "Best bedroom set design and good wardrobe design options here. The craftsmanship is top-notch and fits perfectly with our modern aesthetics.",
+    theme: "light",
+  },
+  {
+    id: 4,
+    name: "Vijay",
+    title: "Homeowner",
+    message:
+      "We simply love all your furniture. I bought a wardrobe and bed from Touchwood Furnitech. I am very happy with the product, their delivery and assembly. Compliments for the range that they offer and the service.",
+    theme: "dark",
+  },
+  {
+    id: 5,
+    name: "Suraj Gaidhane",
+    title: "Homeowner",
+    message:
+      "I would highly recommend Touchwood Furnitech LLP to anyone looking for top-notch interior furniture work. Their dedication to excellence and customer satisfaction is truly commendable.",
+    theme: "light",
+  },
+  {
+    id: 6,
+    name: "Amit Yadav",
+    title: "Homeowner",
+    message:
+      "Best customized furniture with new designs and on-time delivery. Excellent Modular furnitures at very competitive prices. Great services from the Touchwood Team.",
+    theme: "dark",
+  },
+];
+
+// Tilt in degrees for each card — alternating, applied via inline styles so Tailwind purge can't strip them
+const TILTS = [-2, 2, -1.5, 1.5, -2.5, 2.5];
 
 export function TestimonialsSection() {
-  const testimonials = [
-    { 
-      id: 1, 
-      image: "/testimonials/p1.png",
-      name: "ASHWIN SATHWANE",
-      date: "a month ago",
-      message: "I got best Modular kitchen manufacturers in Nagpur. Very good experience in Best Modular furniture in town.",
-      reviewsCount: "5 reviews",
-      photosCount: "4 photos",
-      ownerResponse: "We're so glad you liked your modular kitchen! At Touchwood Furnitech, we specialize in premium modular kitchen with modern designs and long-lasting durability. Your appreciation encourages us to keep crafting functional and stylish interiors."
-    },
-    { 
-      id: 2, 
-      image: "/testimonials/p2.png",
-      name: "Prasenjit Mallick",
-      date: "a year ago",
-      message: "Absolutely brilliant service from Touchwood Furnitech. From ordering to delivery it was so easy and we are delighted with the quality as well. The Staff's were very professional and pleasant, I myself am very satisfied with the quality",
-      reviewsCount: "2 reviews",
-      photosCount: "1 photo"
-    },
-    { 
-      id: 3, 
-      image: "/testimonials/p3.png",
-      name: "Nikhil Tidke",
-      date: "8 months ago",
-      message: "Best bedroom set Design and Good Wardrobe design option here",
-      reviewsCount: "8 reviews",
-      photosCount: "6 photos",
-      ownerResponse: "Thank you sir 🙏🏻"
-    },
-    { 
-      id: 4, 
-      image: "/testimonials/p4.png",
-      name: "Vijay",
-      date: "3 years ago",
-      message: "We smiply love all you furniture. I bought a wardrobe and bed from touchwood furnitech. I am very happy with the product, their delivery and assembly. Compliment for the range that they offer and the service that they provide.",
-      reviewsCount: "1 review",
-      photosCount: "2 photos"
-    },
-    { 
-      id: 5, 
-      image: "/testimonials/p5.png",
-      name: "suraj gaidhane",
-      date: "a year ago",
-      message: "I would highly recommend Touchwood Furnitech LLP to anyone looking for top-notch interior furniture work. Their dedication to excellence and customer satisfaction is truly commendable.",
-      reviewsCount: "3 reviews"
-    },
-    { 
-      id: 6, 
-      image: "/testimonials/p6.png",
-      name: "amit yadav",
-      date: "3 years ago",
-      message: "Best customized furniture with new designs on time delivery",
-      reviewsCount: "4 reviews",
-      photosCount: "2 photos"
-    },
-    { 
-      id: 7, 
-      image: "/testimonials/p7.png",
-      name: "Amit mallick",
-      date: "a year ago",
-      message: "Excellent Modular furnitures at very competitive Prices. Great services from Touchwood Team, the Staff are courteous and helpful. Definitely should go with the Touchwood company for their amazing modular kitchen and furnitures.",
-      reviewsCount: "1 review",
-      ownerResponse: "Thank you for sharing your experience! At Touchwood Furnitech, we specialise in premium modular kitchen and modular wardrobes .we take pride not just in high-quality modular furniture but also in timely delivery and professional service. We look forward to furnishing more of your spaces with our custom designs."
-    },
-  ];
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,          // no loop so we can detect the end
+    align: "start",
+    dragFree: false,
+  });
+
+  const [completedOnce, setCompletedOnce] = useState(false);
+  const wheelCooldown = useRef(false);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  // Track when user reaches the last slide
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => {
+      if (!emblaApi.canScrollNext()) {
+        setCompletedOnce(true);
+      }
+    };
+    emblaApi.on("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
+
+  // Mouse-wheel scroll handler
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const onWheel = (e: WheelEvent) => {
+      // If user has already seen all cards, let normal page scroll happen
+      if (completedOnce && e.deltaY > 0) return;
+
+      // Intercept vertical scroll to drive the carousel
+      e.preventDefault();
+
+      if (wheelCooldown.current) return;
+
+      if (e.deltaY > 0) {
+        emblaApi.scrollNext();
+      } else if (e.deltaY < 0) {
+        emblaApi.scrollPrev();
+      }
+
+      wheelCooldown.current = true;
+      setTimeout(() => {
+        wheelCooldown.current = false;
+      }, 450);
+    };
+
+    const viewport = emblaApi.rootNode();
+    viewport.addEventListener("wheel", onWheel, { passive: false });
+
+    return () => {
+      viewport.removeEventListener("wheel", onWheel);
+    };
+  }, [emblaApi, completedOnce]);
 
   return (
-    <section className="relative bg-gray-200 py-20 overflow-hidden">
-      <div className="text-center mb-4  px-4  mt-60">
-        <h2 className="text-4xl sm:text-6xl font-bold text-gray-900">
-          What our <span className="text-blue-400">Clients Say</span>
+    <section className="bg-[#fcfbf9] py-16 sm:py-24 lg:py-32 overflow-hidden mt-[8vw] sm:mt-[6vw] lg:mt-[4vw]">
+      {/* Header */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
+        <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="h-px w-8 sm:w-16 bg-amber-600/30" />
+          <span className="text-amber-600 font-bold text-xs sm:text-sm tracking-[0.25em] uppercase">
+            Testimonials
+          </span>
+          <div className="h-px w-8 sm:w-16 bg-amber-600/30" />
+        </div>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+          What Our Customers Say
         </h2>
-        <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
-          Nothing makes us happier than seeing our clients love their new spaces.
-          Here’s what they have to say about their journey with us and how our
-          designs made a difference.
-        </p>
       </div>
 
-      {/* Desktop Layout */}
-      <div className="hidden lg:block relative w-full max-w-[1600px] h-[45vw] mx-auto">
-        {testimonials.map((t, i) => {
-          let style = "";
-          let size = "";
-          let z = "";
-          let blur = false;
-
-          switch (i) {
-            case 0:
-              style = "left-[0.5%]";
-              size = "w-[14vw] h-[25vw]";
-              z = "z-[5]";
-              blur = true;
-              break;
-            case 1:
-              style = "left-[16%]";
-              size = "w-[14vw] h-[25vw]";
-              z = "z-[10]";
-              blur = true;
-              break;
-            case 2:
-              style = "left-[22%]";
-              size = "w-[18vw] h-[30vw]";
-              z = "z-[15]";
-              blur = false;
-              break;
-            case 3:
-              style = "left-1/2 -translate-x-1/2";
-              size = "w-[26vw] h-[38vw]";
-              z = "z-[30]";
-              blur = false;
-              break;
-            case 4:
-              style = "right-[22%]";
-              size = "w-[18vw] h-[30vw]";
-              z = "z-[15]";
-              blur = false;
-              break;
-            case 5:
-              style = "right-[16%]";
-              size = "w-[14vw] h-[25vw]";
-              z = "z-[10]";
-              blur = true;
-              break;
-            case 6:
-              style = "right-[0.5%]";
-              size = "w-[14vw] h-[25vw]";
-              z = "z-[5]";
-              blur = true;
-              break;
-          }
-
-          return (
-            <div
-              key={t.id}
-              className={`absolute top-1/2 -translate-y-1/2 ${style} ${z} ${size}
-                overflow-hidden rounded-md shadow-xl transition-all duration-500
-                hover:scale-110 hover:z-[40] hover:shadow-2xl group`}
-            >
-              {/* Background Image */}
-              <Image
-                src={t.image}
-                alt={`testimonial-${t.id}`}
-                fill
-                className={`object-cover transition-all duration-500 ${
-                  blur
-                    ? "blur-[2px] opacity-80 group-hover:blur-0 group-hover:opacity-100"
-                    : "opacity-100"
-                }`}
-              />
-              
-              {/* Blur overlay for bottom 30% */}
-              <div className="absolute bottom-0 left-0 right-0 h-[30%] backdrop-blur-md z-10"></div>
-              
-              {/* Review Card Overlay - Bottom Section Only */}
-              <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col p-3 sm:p-4 rounded-b-md">
-                {/* Reviewer Info */}
-                <div className="flex items-start gap-2 sm:gap-3 mb-2 sm:mb-3">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <span className="text-white font-medium text-[9px] sm:text-[10px]">{t.name.charAt(0)}</span>
+      {/* Carousel */}
+      <div className="relative">
+        <div
+          ref={emblaRef}
+          className="overflow-hidden cursor-grab active:cursor-grabbing"
+        >
+          <div className="flex gap-6 sm:gap-8 px-4 sm:px-10 lg:px-20 py-12">
+            {testimonials.map((t, index) => {
+              const isDark = t.theme === "dark";
+              const tiltDeg = TILTS[index % TILTS.length];
+              return (
+                <div
+                  key={t.id}
+                  style={{
+                    transform: `rotate(${tiltDeg}deg)`,
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.transform =
+                      "rotate(0deg) scale(1.05)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.transform =
+                      `rotate(${tiltDeg}deg)`;
+                  }}
+                  className={`flex-shrink-0 w-[85vw] sm:w-[380px] lg:w-[420px] rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col
+                    ${isDark ? "bg-[#0b132b] text-white" : "bg-white text-gray-900"}
+                  `}
+                >
+                  {/* Stars */}
+                  <div className="flex items-center gap-1.5 mb-8">
+                    {[...Array(5)].map((_, i) => (
+                      <svg
+                        key={i}
+                        className="w-5 h-5 text-amber-500 fill-current"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                      </svg>
+                    ))}
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-medium text-gray-900 text-[10px] sm:text-xs truncate drop-shadow-lg" style={{ textShadow: '2px 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.7)' }}>{t.name}</h4>
-                    {(t.reviewsCount || t.photosCount) && (
-                      <p className="text-gray-800 text-[9px] sm:text-[10px] drop-shadow-md" style={{ textShadow: '1px 1px 3px rgba(255, 255, 255, 0.9), 0 0 6px rgba(255, 255, 255, 0.6)' }}>
-                        {t.reviewsCount && t.photosCount ? `${t.reviewsCount} · ${t.photosCount}` : t.reviewsCount || t.photosCount}
-                      </p>
-                    )}
-                  </div>
-                </div>
 
-                {/* Star Rating */}
-                <div className="flex items-center gap-0.5 mb-1.5">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-yellow-400 fill-current drop-shadow-lg" viewBox="0 0 20 20" style={{ filter: 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3))' }}>
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                  ))}
-                  <span className="text-gray-800 text-[9px] sm:text-[10px] ml-1 drop-shadow-md" style={{ textShadow: '1px 1px 3px rgba(255, 255, 255, 0.9), 0 0 6px rgba(255, 255, 255, 0.6)' }}>{t.date}</span>
-                </div>
-
-                {/* Review Message */}
-                <p className="text-gray-900 text-[10px] sm:text-xs leading-relaxed mb-2 flex-1 overflow-y-auto line-clamp-3 sm:line-clamp-4 drop-shadow-lg" style={{ textShadow: '2px 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.7)' }}>
-                  {t.message}
-                </p>
-
-                {/* Owner Response */}
-                {t.ownerResponse && (
-                  <div className="mt-auto bg-white/80 backdrop-blur-sm rounded-lg p-1.5 sm:p-2 border-l-4 border-green-500 shadow-lg">
-                    <p className="text-green-700 font-medium text-[10px] sm:text-xs mb-0.5 drop-shadow-sm" style={{ textShadow: '1px 1px 2px rgba(255, 255, 255, 0.8)' }}>Response from the owner</p>
-                    <p className="text-gray-800 text-[10px] sm:text-xs leading-relaxed line-clamp-2 sm:line-clamp-3 drop-shadow-sm" style={{ textShadow: '1px 1px 2px rgba(255, 255, 255, 0.8)' }}>
-                      {t.ownerResponse}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Mobile & Tablet Scrollable Carousel */}
-      <div className="lg:hidden flex space-x-6 overflow-x-auto px-6 pb-4 snap-x snap-mandatory">
-        {testimonials.map((t) => (
-          <div
-            key={t.id}
-            className="relative flex-shrink-0 w-[80%] sm:w-[60%] md:w-[45%] h-[500px] snap-center rounded-xl overflow-hidden shadow-lg transition-transform duration-500 hover:scale-105"
-          >
-            <Image
-              src={t.image}
-              alt={`testimonial-${t.id}`}
-              fill
-              className="object-cover"
-            />
-            
-            {/* Blur overlay for bottom 30% */}
-            <div className="absolute bottom-0 left-0 right-0 h-[30%] backdrop-blur-md z-10"></div>
-            
-            {/* Review Card Overlay for Mobile - Bottom Section Only */}
-            <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col p-4 rounded-b-xl">
-              {/* Reviewer Info */}
-              <div className="flex items-start gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                  <span className="text-white font-medium text-xs">{t.name.charAt(0)}</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-medium text-gray-900 text-xs truncate drop-shadow-lg" style={{ textShadow: '2px 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.7)' }}>{t.name}</h4>
-                  {(t.reviewsCount || t.photosCount) && (
-                    <p className="text-gray-800 text-[10px] drop-shadow-md" style={{ textShadow: '1px 1px 3px rgba(255, 255, 255, 0.9), 0 0 6px rgba(255, 255, 255, 0.6)' }}>
-                      {t.reviewsCount && t.photosCount ? `${t.reviewsCount} · ${t.photosCount}` : t.reviewsCount || t.photosCount}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              {/* Star Rating */}
-              <div className="flex items-center gap-0.5 mb-2">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-3 h-3 text-yellow-400 fill-current drop-shadow-lg" viewBox="0 0 20 20" style={{ filter: 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3))' }}>
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                  </svg>
-                ))}
-                <span className="text-gray-800 text-[10px] ml-1 drop-shadow-md" style={{ textShadow: '1px 1px 3px rgba(255, 255, 255, 0.9), 0 0 6px rgba(255, 255, 255, 0.6)' }}>{t.date}</span>
-              </div>
-
-              {/* Review Message */}
-              <p className="text-gray-900 text-xs leading-relaxed mb-3 flex-1 overflow-y-auto line-clamp-4 drop-shadow-lg" style={{ textShadow: '2px 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.7)' }}>
-                {t.message}
-              </p>
-
-              {/* Owner Response */}
-              {t.ownerResponse && (
-                <div className="mt-auto bg-white/80 backdrop-blur-sm rounded-lg p-2 border-l-4 border-green-500 shadow-lg">
-                  <p className="text-green-700 font-medium text-xs mb-1 drop-shadow-sm" style={{ textShadow: '1px 1px 2px rgba(255, 255, 255, 0.8)' }}>Response from the owner</p>
-                  <p className="text-gray-800 text-xs leading-relaxed line-clamp-3 drop-shadow-sm" style={{ textShadow: '1px 1px 2px rgba(255, 255, 255, 0.8)' }}>
-                    {t.ownerResponse}
+                  {/* Message */}
+                  <p
+                    className={`text-base sm:text-lg leading-relaxed mb-10 font-medium flex-1 ${isDark ? "text-gray-200" : "text-gray-700"
+                      }`}
+                  >
+                    "{t.message}"
                   </p>
+
+                  {/* Customer Info */}
+                  <div className="flex items-center gap-4 mt-auto pt-4 border-t border-black/5">
+                    <div
+                      className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg
+                        ${isDark ? "bg-white/10 text-white" : "bg-[#0b132b] text-white"}
+                      `}
+                    >
+                      {t.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")
+                        .substring(0, 2)
+                        .toUpperCase()}
+                    </div>
+                    <div>
+                      <h4
+                        className={`font-bold text-sm sm:text-base ${isDark ? "text-white" : "text-gray-900"
+                          }`}
+                      >
+                        {t.name}
+                      </h4>
+                      <p
+                        className={`text-xs sm:text-sm mt-0.5 ${isDark ? "text-gray-400" : "text-gray-500"
+                          }`}
+                      >
+                        {t.title}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
+              );
+            })}
           </div>
-        ))}
+        </div>
+
+        {/* Prev / Next buttons */}
+        <div className="flex justify-center gap-4 mt-10">
+          <button
+            onClick={scrollPrev}
+            aria-label="Previous testimonial"
+            className="w-14 h-14 rounded-full bg-white border border-gray-200 shadow-md flex items-center justify-center
+              text-gray-700 hover:bg-[#0b132b] hover:text-white hover:border-[#0b132b] hover:shadow-lg
+              transition-all duration-300 active:scale-95"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={scrollNext}
+            aria-label="Next testimonial"
+            className="w-14 h-14 rounded-full bg-[#0b132b] border border-[#0b132b] shadow-md flex items-center justify-center
+              text-white hover:bg-white hover:text-[#0b132b] hover:border-gray-200 hover:shadow-lg
+              transition-all duration-300 active:scale-95"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
+
+        {/* Hint shown until completed */}
+        {!completedOnce && (
+          <p className="text-center text-xs text-gray-400 mt-6 animate-pulse">
+            Scroll down to browse testimonials ↓
+          </p>
+        )}
       </div>
     </section>
   );
