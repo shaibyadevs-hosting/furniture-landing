@@ -107,11 +107,11 @@ export function Footer() {
                 <span>+91 7722 008401 / 001171</span>
               </a>
               <a
-                href="mailto:Touchwoodfurnitech225@gmail.com"
+                href="mailto:touchwoodfurnitech225@gmail.com"
                 className="flex items-center gap-2.5 hover:text-amber-400 transition-colors group"
               >
                 <Mail className="w-4 h-4 text-amber-500/60 flex-shrink-0 group-hover:text-amber-400" />
-                <span className="break-all">Touchwoodfurnitech225@gmail.com</span>
+                <span className="break-all">touchwoodfurnitech225@gmail.com</span>
               </a>
             </div>
           </div>
