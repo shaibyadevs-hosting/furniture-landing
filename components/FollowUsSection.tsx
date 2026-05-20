@@ -5,14 +5,14 @@ import { Instagram } from "lucide-react";
 // Placeholder slots — replace src with real image paths when ready
 // Each item also carries the Instagram post URL it should link to
 const POSTS = [
-  { id: 1, src: "", href: "https://www.instagram.com/touchwoodfurnitech/" },
-  { id: 2, src: "", href: "https://www.instagram.com/touchwoodfurnitech/" },
-  { id: 3, src: "", href: "https://www.instagram.com/touchwoodfurnitech/" },
-  { id: 4, src: "", href: "https://www.instagram.com/touchwoodfurnitech/" },
-  { id: 5, src: "", href: "https://www.instagram.com/touchwoodfurnitech/" },
-  { id: 6, src: "", href: "https://www.instagram.com/touchwoodfurnitech/" },
-  { id: 7, src: "", href: "https://www.instagram.com/touchwoodfurnitech/" },
-  { id: 8, src: "", href: "https://www.instagram.com/touchwoodfurnitech/" },
+  { id: 1, src: "/insta 1.png", href: "https://www.instagram.com/p/DUav1hODC_i/?img_index=1" },
+  { id: 2, src: "/insta 2.png", href: "https://www.instagram.com/p/DT7vLs-jIqE/?img_index=1" },
+  { id: 3, src: "/insta 3.png", href: "https://www.instagram.com/p/DTKyn_zjK6y/?img_index=1" },
+  { id: 4, src: "/insta 4.png", href: "https://www.instagram.com/p/DS2QbrnDI0y/?img_index=1" },
+  { id: 5, src: "/insta 5.png", href: "https://www.instagram.com/p/DSpdI9ADOg3/?img_index=1" },
+  { id: 6, src: "/insta 6.png", href: "https://www.instagram.com/p/DQZwD7HjLGj/?img_index=1" },
+  { id: 7, src: "/insta 7.png", href: "https://www.instagram.com/p/DIDe9bvMPOA/?img_index=1" },
+  { id: 8, src: "/insta 8.png", href: "https://www.instagram.com/p/CXOryflveXm/" },
 ];
 
 // Duplicate for seamless loop

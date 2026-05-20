@@ -42,8 +42,8 @@ export function ContactSection() {
     {
       icon: Mail,
       label: "Email Us",
-      value: "Touchwoodfurnitech225@gmail.com",
-      href: "mailto:Touchwoodfurnitech225@gmail.com",
+      value: "touchwoodfurnitech225@gmail.com",
+      href: "mailto:touchwoodfurnitech225@gmail.com",
     },
   ];
 
@@ -123,9 +123,8 @@ export function ContactSection() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Touchwood Furnitech Location"
-                className="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
+                className="w-full h-full"
               />
-              <div className="absolute inset-0 bg-[#0b132b]/40 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
               <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs font-semibold text-gray-800 flex items-center gap-1.5 shadow-lg">
                 <MapPin className="w-3 h-3 text-red-500" />
                 Open in Maps

@@ -107,15 +107,11 @@ function TransformationCard({ beforeImg, afterImg, category, title, desc, link }
         </div>
       </div>
 
-      <div className="mt-5 flex items-center justify-between px-2">
+      <div className="mt-5 flex items-center px-2">
         <span className="text-xs font-medium text-gray-400 uppercase tracking-wider flex items-center gap-2">
           <ArrowLeftRight className="w-3 h-3" />
           Drag to compare
         </span>
-        <Link href={link} className="text-sm font-bold text-[#0b132b] hover:text-amber-600 transition-colors flex items-center gap-1 group/link">
-          View Project
-          <span className="group-hover/link:translate-x-1 transition-transform">→</span>
-        </Link>
       </div>
     </div>
   );
